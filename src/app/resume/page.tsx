@@ -1,9 +1,9 @@
 import ResumeView from "./resume-view";
 
 export const metadata = {
-  title: "Résumé | Akash Malhotra",
+  title: "Résumé | Nilesh Raj",
   description:
-    "Résumé of Akash Malhotra — Co-Founder & Engineer. View online or download the PDF.",
+    "Résumé of Nilesh Raj — AI/ML Developer. View online or download the PDF.",
 };
 
 export default function ResumePage() {

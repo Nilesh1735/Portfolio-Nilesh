@@ -1,41 +1,44 @@
 const config = {
-  title: "Akash Malhotra | Co-Founder & Engineer",
+  title: "Nilesh Raj | AI/ML & GenAI Developer",
   description: {
-    long: "Explore the portfolio of Akash Malhotra — Co-Founder of CallHQ.ai, Broki, and Otoma8. Former Senior Lead Software Engineer at Adobe with 12+ years building AI voice agents, commerce platforms, and scalable products.",
+    long: "Explore the portfolio of Nilesh Raj — AI/ML Engineer specializing in building practical applications with large language models, RAG pipelines, and agentic AI architectures using Python, LangChain, and FastAPI.",
     short:
-      "Portfolio of Akash Malhotra — Co-Founder, engineer, and ex-Adobe tech lead building AI and commerce products.",
+      "Portfolio of Nilesh Raj — AI/ML Engineer building intelligent applications with LLMs, RAG, and Agentic AI.",
   },
   keywords: [
-    "Akash Malhotra",
-    "portfolio",
-    "CallHQ",
-    "Broki",
-    "Otoma8",
-    "voice AI",
-    "full-stack developer",
-    "co-founder",
-    "Adobe",
+    "Nilesh Raj",
+    "AI Engineer",
+    "GenAI Developer",
+    "Machine Learning",
+    "LLM",
+    "RAG",
+    "Agentic AI",
+    "LangChain",
+    "LangGraph",
+    "Python",
+    "FastAPI",
     "React",
-    "Next.js",
     "TypeScript",
+    "Hugging Face",
+    "NLP",
   ],
-  author: "Akash Malhotra",
-  email: "contact@broki.in",
-  site: "https://broki.in",
+  author: "Nilesh Raj",
+  email: "nileshraj1735@gmail.com",
+  site: "https://nileshraj.vercel.app",
 
-  // for github stars button
-  githubUsername: "akashrmalhotra",
-  githubRepo: "3d-portfolio-next",
+  // Point this to your new top project!
+  githubUsername: "Nilesh1735",
+  githubRepo: "OmniCrew-AI", 
 
   get ogImg() {
     return this.site + "/assets/seo/og-image.png";
   },
   social: {
-    twitter: "https://www.linkedin.com/in/akashrmalhotra",
-    linkedin: "https://www.linkedin.com/in/akashrmalhotra",
-    instagram: "https://www.linkedin.com/in/akashrmalhotra",
-    facebook: "https://www.linkedin.com/in/akashrmalhotra",
-    github: "https://github.com/akashrmalhotra",
+    twitter: "",
+    linkedin: "https://www.linkedin.com/in/nilesh-raj-nr1735",
+    instagram: "",
+    facebook: "",
+    github: "https://github.com/Nilesh1735",
   },
 };
 export { config };

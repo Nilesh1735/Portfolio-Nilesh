@@ -1,0 +1,17 @@
+# Nilesh Raj - AI/ML Engineer & GenAI Developer
+
+## Profile
+Nilesh Raj is an AI/ML Engineer specializing in Agentic AI, RAG pipelines, and Full-Stack AI development. 
+He builds enterprise-grade, production-ready AI automation systems using Python, LangGraph, FastAPI, and React.
+
+## Core Projects
+1. OmniCrew AI: An autonomous multi-agent RPA platform for sovereign web data extraction.
+2. LumanGuide: An enterprise Agentic RAG system with LangGraph orchestration and LLMOps observability.
+
+## Skills
+Python, LangChain, LangGraph, FastAPI, Docker, AWS, FAISS, RAG, SQL, PineCone, VectorDatabases.
+
+## Contact
+Email: nileshraj1735@gmail.com
+GitHub: https://github.com/Nilesh1735
+LinkedIn: https://www.linkedin.com/in/nilesh-raj-nr1735/

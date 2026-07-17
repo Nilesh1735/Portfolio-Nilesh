@@ -228,6 +228,37 @@ body > canvas {
   }
 }
 
+/* Spatial Card Depth Effect */
+.perspective-container {
+  perspective: 1000px;
+}
+
+.project-card {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid transparent;
+}
+
+.project-card:hover {
+  /* Removed transform to prevent cursor twitching when hovering over links */
+  box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.5);
+  border-color: hsl(var(--primary) / 0.3); /* Added a subtle border glow instead */
+}
+
+/* Scroll Spotlight Background */
+.spotlight-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0; /* Sits above the body background, but below your z-10+ content */
+  background: radial-gradient(circle at 50% -20%, hsl(var(--primary) / 0.15), transparent 50%);
+  transition: background 0.2s ease-out;
+}
+
 /* Accessibility + low-end escape hatch: when the OS requests reduced motion,
    neutralize CSS animations/transitions globally. The heavy JS/WebGL effects
    (Spline scene, particle canvas, elastic cursor) are gated separately in

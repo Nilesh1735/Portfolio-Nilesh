@@ -8,15 +8,16 @@ import SiteFrame from "@/components/site-frame";
 import { Providers } from "@/components/providers";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
-/* Body/base font — Space Grotesk, bound to --font-sans (applied as `font-sans`
- * on <html>). Everything that isn't a heading inherits this. */
+// Import the new UI overlays
+import ScrollProgress from "@/components/ui/scroll-progress";
+import ScrollSpotlight from "@/components/scroll-spotlight";
+
 const spaceGroteskSans = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
 });
 
-/* Heading font — Unbounded, bound to --font-display and applied to h1–h6. */
 const unbounded = Unbounded({
   subsets: ["latin"],
   variable: "--font-display",
@@ -70,8 +71,6 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* The Spline runtime lazy-loads its wasm from unpkg; warm the
-            connection early so the 3D scene starts faster. */}
         <link rel="preconnect" href="https://unpkg.com" crossOrigin="anonymous" />
         {process.env.UMAMI_DOMAIN && process.env.UMAMI_SITE_ID ? (
           <Script
@@ -82,12 +81,37 @@ export default function RootLayout({
         ) : null}
       </head>
       <body>
+        {/* Global UI Overlays */}
+        <ScrollProgress />
+        <ScrollSpotlight />
+
         <Providers>
           <SiteFrame>{children}</SiteFrame>
         </Providers>
+        
         {process.env.NEXT_PUBLIC_GA_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
         )}
+        
+        {/* JSON-LD Structured Data moved INSIDE the body tag to satisfy Next.js 16 strict HTML rules */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": config.author,
+              "url": config.site,
+              "image": config.ogImg,
+              "sameAs": [
+                "https://github.com/Nilesh1735",
+                "https://www.linkedin.com/in/nilesh-raj-nr1735/"
+              ],
+              "jobTitle": "AI / ML Engineer | GenAI Developer",
+              "knowsAbout": ["Python", "LangChain", "RAG Pipelines", "FastAPI", "React", "Next.js"]
+            })
+          }}
+        />
       </body>
     </html>
   );

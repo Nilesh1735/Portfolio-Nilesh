@@ -1,12 +1,8 @@
-# 🚀 Akash Malhotra — 3D Portfolio
+# 🚀 Nilesh Raj — 3D Portfolio
 
-Interactive 3D developer portfolio with a keyboard where every keycap is a skill. Built with Next.js, React, TypeScript, GSAP, and Motion.
+Interactive 3D developer portfolio with a keyboard where every keycap is a skill. Built with Next.js, React, TypeScript, GSAP, and Motion. Customized for [Nilesh Raj](https://github.com/Nilesh1735) — AI/ML Developer.
 
-Forked from [Naresh Khatri's 3d-portfolio](https://github.com/Naresh-Khatri/3d-portfolio) template and customized for [Akash Malhotra](https://github.com/akashrmalhotra).
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/akashrmalhotra/3d-portfolio-next)
-
-![Portfolio Preview](./public/assets/projects-screenshots/callhq/callhq.png)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nilesh1735/NileshRaj-Portfolio)
 
 ## ✨ Features
 
@@ -43,8 +39,8 @@ Forked from [Naresh Khatri's 3d-portfolio](https://github.com/Naresh-Khatri/3d-p
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/akashrmalhotra/3d-portfolio-next.git
-    cd 3d-portfolio-next
+    git clone https://github.com/Nilesh1735/NileshRaj-Portfolio.git
+    cd NileshRaj-Portfolio
     ```
 
 2. **Install dependencies:**
@@ -84,15 +80,15 @@ All personal info is centralized in [`src/data/config.ts`](src/data/config.ts):
 
 ```ts
 const config = {
-  title: "Akash Malhotra | Co-Founder & Engineer",
-  author: "Akash Malhotra",
-  email: "contact@broki.in",
-  site: "https://broki.in",
-  githubUsername: "akashrmalhotra",
-  githubRepo: "3d-portfolio-next",
+  title: "Nilesh Raj | AI/ML Developer",
+  author: "Nilesh Raj",
+  email: "nileshraj1735@gmail.com",
+  site: "https://nileshraj.vercel.app",
+  githubUsername: "Nilesh1735",
+  githubRepo: "NileshRaj-Portfolio",
   social: {
-    linkedin: "https://www.linkedin.com/in/akashrmalhotra",
-    github: "https://github.com/akashrmalhotra",
+    linkedin: "https://www.linkedin.com/in/nilesh-raj-nr1735",
+    github: "https://github.com/Nilesh1735",
     // ...
   },
 };
@@ -104,20 +100,16 @@ Other files to customize:
 |---|---|
 | `src/data/projects.tsx` | Projects, screenshots, descriptions, and tech stacks |
 | `src/data/constants.ts` | Skills list and work experience |
-| `public/Akash_Malhotra_Resume.pdf` | Résumé PDF for the resume page |
-| `public/assets/projects-screenshots/` | Project screenshots (`callhq/`, `broki/`, etc.) |
+| `public/Nilesh_Raj_Resume.pdf` | Résumé PDF for the resume page |
+| `public/assets/me.jpg` | Profile photo |
 | `public/assets/seo/og-image.png` | Social share preview image |
 
 ### Projects
 
 Screenshots live under `public/assets/projects-screenshots/<project-id>/`. Current projects:
 
-- [CallHQ.ai](https://callhq.ai)
-- [Broki](https://broki.in)
-- [CallHQ WhatsApp](https://whatsapp.callhq.ai)
-- [Orrdr](https://orrdr.com)
-- [Otoma8](https://otoma8.com)
-- [Tesoro by Sania](https://tesorobysania.com)
+- [LumanGuide](https://github.com/Nilesh1735/LumanGuide-Onboarding-Illuminated-) — Enterprise-grade agentic RAG system
+- _More projects coming soon!_
 
 ---
 
@@ -128,7 +120,7 @@ The 3D keyboard keycaps are baked into a Spline file. To update the skills displ
 1. **Import** the `public/assets/skills-keyboard.spline` file into [Spline](https://spline.design/)
 2. **Unhide** the keycap objects you want to edit
 3. **Update** the logo images on each keycap to your new skill icons
-4. **Rename** each keycap object to match the skill's `name` field in `src/data/constants.ts` (e.g. `js`, `react`, `docker`)
+4. **Rename** each keycap object to match the skill's `name` field in `src/data/constants.ts` (e.g. `python`, `langchain`, `react`)
 5. **Hide** all keycap objects again
 6. **Export** the scene and overwrite `public/assets/skills-keyboard.spline`
 
@@ -136,8 +128,8 @@ After updating the Spline file, make sure `src/data/constants.ts` has matching e
 
 ```ts
 export const SKILLS: Record<SkillNames, Skill> = {
-  js: { name: "js", label: "JavaScript", shortDescription: "...", ... },
-  react: { name: "react", label: "React", shortDescription: "...", ... },
+  python: { name: "python", label: "Python", shortDescription: "...", ... },
+  langchain: { name: "langchain", label: "LangChain", shortDescription: "...", ... },
   // ... add/remove entries to match your keyboard
 };
 ```
@@ -160,7 +152,7 @@ These features activate automatically when the `NEXT_PUBLIC_WS_URL` environment 
 
 ## 🚀 Deployment
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/akashrmalhotra/3d-portfolio-next)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nilesh1735/NileshRaj-Portfolio)
 
 This site is deployed on **Vercel**. To deploy your own:
 

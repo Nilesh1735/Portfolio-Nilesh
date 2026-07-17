@@ -3,7 +3,9 @@ import { config } from "@/data/config";
 import { Resend } from "resend";
 import { z } from "zod";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = process.env.RESEND_API_KEY
+  ? new Resend(process.env.RESEND_API_KEY)
+  : null;
 
 const rateLimit = new Map<string, { count: number; resetAt: number }>();
 const RATE_LIMIT_MAX = 3;
@@ -25,6 +27,7 @@ const Email = z.object({
   email: z.string().email({ message: "Email is invalid!" }),
   message: z.string().min(10, "Message is too short!"),
 });
+
 export async function POST(req: Request) {
   try {
     const ip = req.headers.get("x-forwarded-for") ?? "unknown";
@@ -38,11 +41,18 @@ export async function POST(req: Request) {
       data: zodData,
       error: zodError,
     } = Email.safeParse(body);
-    if (!zodSuccess)
+    
+    if (!zodSuccess) {
       return Response.json({ error: zodError?.message }, { status: 400 });
+    }
+
+    if (!resend) {
+      console.error("RESEND_API_KEY is missing in .env.local");
+      return Response.json({ error: "Server email is not configured." }, { status: 500 });
+    }
 
     const { data: resendData, error: resendError } = await resend.emails.send({
-      from: "Porfolio <onboarding@resend.dev>",
+      from: "Portfolio <onboarding@resend.dev>",
       to: [config.email],
       subject: "Contact me from portfolio",
       react: EmailTemplate({
@@ -53,11 +63,14 @@ export async function POST(req: Request) {
     });
 
     if (resendError) {
-      return Response.json({ error: "Failed to send email" }, { status: 500 });
+      // This will print the exact reason Resend rejected the email in your terminal
+      console.error("Resend API Error:", resendError);
+      return Response.json({ error: resendError.message }, { status: 500 });
     }
 
     return Response.json(resendData);
   } catch (error) {
-    return Response.json({ error }, { status: 500 });
+    console.error("Unexpected Error in /api/send:", error);
+    return Response.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }

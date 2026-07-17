@@ -4,6 +4,7 @@ import { TypographyP } from "@/components/ui/typography";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { ReactNode } from "react";
+import ProjectArchitecture from "@/components/project-architecture"; // ADDED IMPORT
 
 const BASE_PATH = "/assets/projects-screenshots";
 const PLACEHOLDER_IMG = "/assets/logo-dark.svg";
@@ -28,21 +29,25 @@ const MaskIcon = ({ src, title }: { src: string; title?: string }) => (
   />
 );
 
-const ProjectsLinks = ({ live }: { live?: string }) => {
-  if (!live || live === "#") return null;
+const ProjectsLinks = ({ live, github }: { live?: string; github?: string }) => {
   return (
     <div className="flex flex-col md:flex-row items-center justify-start gap-3 my-3 mb-8">
-      <Link
-        className="font-mono underline flex gap-2"
-        rel="noopener"
-        target="_new"
-        href={live}
-      >
-        <Button variant={"default"} size={"sm"}>
-          Visit Website
-          <ArrowUpRight className="ml-3 w-5 h-5" />
-        </Button>
-      </Link>
+      {live && live !== "#" && (
+        <Link className="font-mono underline flex gap-2" rel="noopener" target="_new" href={live}>
+          <Button variant={"default"} size={"sm"}>
+            Visit Website
+            <ArrowUpRight className="ml-3 w-5 h-5" />
+          </Button>
+        </Link>
+      )}
+      {github && github !== "#" && (
+        <Link className="font-mono underline flex gap-2" rel="noopener" target="_new" href={github}>
+          <Button variant={"outline"} size={"sm"}>
+            View on GitHub
+            <ArrowUpRight className="ml-3 w-5 h-5" />
+          </Button>
+        </Link>
+      )}
     </div>
   );
 };
@@ -72,8 +77,12 @@ const PROJECT_SKILLS = {
   mongo: brand("MongoDB", "mongodb-mono.svg"),
   aiSDK: brand("Vercel AI SDK", "vercel-mono.svg"),
   anthropic: brand("Anthropic Claude", "anthropic-mono.svg"),
-  mistral: brand("Mistral AI", "mistral-ai-mono.svg"),
-  sockerio: brand("Socket.io", "socketdotio-mono.svg"),
+  fastapi: brand("FastAPI", "fastapi-mono.svg"),
+  langchain: brand("LangChain", "langchain-mono.svg"),
+  openai: brand("OpenAI", "openai-mono.svg"),
+  huggingface: brand("Hugging Face", "huggingface-mono.svg"),
+  faiss: brand("FAISS", "faiss-mono.svg"),
+  streamlit: brand("Streamlit", "streamlit-mono.svg"),
   docker: brand("Docker", "docker-mono.svg"),
   aws: brand("AWS", "cloudflare-mono.svg"),
 };
@@ -92,180 +101,59 @@ export type Project = {
 
 const projects: Project[] = [
   {
-    id: "callhq",
-    category: "Voice AI",
-    title: "CallHQ.ai",
-    src: `${BASE_PATH}/callhq/callhq.png`,
-    screenshots: ["callhq.png"],
-    live: "https://callhq.ai",
-    skills: {
-      frontend: [
-        PROJECT_SKILLS.ts,
-        PROJECT_SKILLS.next,
-        PROJECT_SKILLS.react,
-        PROJECT_SKILLS.tailwind,
-      ],
-      backend: [
-        PROJECT_SKILLS.node,
-        PROJECT_SKILLS.python,
-        PROJECT_SKILLS.aiSDK,
-        PROJECT_SKILLS.anthropic,
-      ],
-    },
-    get content() {
-      return (
-        <div>
-          <TypographyP className="font-mono">
-            AI-powered voice agents for sales, customer engagement, and lead
-            generation — natural, human-like phone conversations at scale.
-          </TypographyP>
-          <ProjectsLinks live={this.live} />
-          <SlideShow images={[`${BASE_PATH}/callhq/callhq.png`]} />
-        </div>
-      );
-    },
-  },
-  {
-    id: "broki",
-    category: "Marketplace",
-    title: "Broki",
-    src: `${BASE_PATH}/broki/broki.png`,
-    screenshots: ["broki.png"],
-    live: "https://broki.in",
-    skills: {
-      frontend: [
-        PROJECT_SKILLS.ts,
-        PROJECT_SKILLS.next,
-        PROJECT_SKILLS.react,
-        PROJECT_SKILLS.tailwind,
-      ],
-      backend: [
-        PROJECT_SKILLS.node,
-        PROJECT_SKILLS.postgres,
-        PROJECT_SKILLS.mongo,
-      ],
-    },
-    get content() {
-      return (
-        <div>
-          <TypographyP className="font-mono">
-            One-stop marketplace for food &amp; beverage — cloud kitchens,
-            restaurants, and commercial spaces across Delhi NCR.
-          </TypographyP>
-          <ProjectsLinks live={this.live} />
-          <SlideShow images={[`${BASE_PATH}/broki/broki.png`]} />
-        </div>
-      );
-    },
-  },
-  {
-    id: "whatsapp",
-    category: "Messaging",
-    title: "CallHQ WhatsApp",
-    src: `${BASE_PATH}/whatsapp/whatsapp.png`,
-    screenshots: ["whatsapp.png"],
-    live: "https://whatsapp.callhq.ai",
-    skills: {
-      frontend: [PROJECT_SKILLS.react, PROJECT_SKILLS.ts, PROJECT_SKILLS.tailwind],
-      backend: [PROJECT_SKILLS.node, PROJECT_SKILLS.sockerio],
-    },
-    get content() {
-      return (
-        <div>
-          <TypographyP className="font-mono">
-            WhatsApp integration layer for CallHQ — automate customer
-            conversations and workflows over WhatsApp Business.
-          </TypographyP>
-          <ProjectsLinks live={this.live} />
-          <SlideShow images={[`${BASE_PATH}/whatsapp/whatsapp.png`]} />
-        </div>
-      );
-    },
-  },
-  {
-    id: "orrdr",
-    category: "Commerce",
-    title: "Orrdr",
-    src: `${BASE_PATH}/orrdr/orrdr.png`,
-    screenshots: ["orrdr.png"],
-    live: "https://orrdr.com",
-    skills: {
-      frontend: [
-        PROJECT_SKILLS.ts,
-        PROJECT_SKILLS.next,
-        PROJECT_SKILLS.react,
-        PROJECT_SKILLS.tailwind,
-      ],
-      backend: [PROJECT_SKILLS.node, PROJECT_SKILLS.postgres],
-    },
-    get content() {
-      return (
-        <div>
-          <TypographyP className="font-mono">
-            Commerce platform for ordering and fulfillment.
-          </TypographyP>
-          <ProjectsLinks live={this.live} />
-          <SlideShow images={[`${BASE_PATH}/orrdr/orrdr.png`]} />
-        </div>
-      );
-    },
-  },
-  {
-    id: "otoma8",
-    category: "AI Platform",
-    title: "Otoma8",
-    src: `${BASE_PATH}/otoma8/otoma8.png`,
-    screenshots: ["otoma8.png"],
-    live: "https://otoma8.com",
-    skills: {
-      frontend: [
-        PROJECT_SKILLS.ts,
-        PROJECT_SKILLS.next,
-        PROJECT_SKILLS.react,
-        PROJECT_SKILLS.tailwind,
-      ],
-      backend: [
-        PROJECT_SKILLS.node,
-        PROJECT_SKILLS.python,
-        PROJECT_SKILLS.aiSDK,
-      ],
-    },
-    get content() {
-      return (
-        <div>
-          <TypographyP className="font-mono">
-            AI platform co-founded alongside CallHQ and Broki — building the next
-            generation of business automation tools.
-          </TypographyP>
-          <ProjectsLinks live={this.live} />
-          <SlideShow images={[`${BASE_PATH}/otoma8/otoma8.png`]} />
-        </div>
-      );
-    },
-  },
-  {
-    id: "tesorobysania",
-    category: "E-commerce",
-    title: "Tesoro by Sania",
+    id: "omnicrew-ai",
+    category: "Agentic AI / Full Stack",
+    title: "OmniCrew AI",
     src: PLACEHOLDER_IMG,
     screenshots: [],
-    live: "https://tesorobysania.com",
+    github: "https://github.com/Nilesh1735",
+    live: "#",
     skills: {
-      frontend: [
-        PROJECT_SKILLS.ts,
-        PROJECT_SKILLS.next,
-        PROJECT_SKILLS.react,
-        PROJECT_SKILLS.tailwind,
-      ],
-      backend: [PROJECT_SKILLS.node],
+      frontend: [PROJECT_SKILLS.react, PROJECT_SKILLS.ts],
+      backend: [PROJECT_SKILLS.python, PROJECT_SKILLS.fastapi, PROJECT_SKILLS.langchain, PROJECT_SKILLS.docker, PROJECT_SKILLS.aws],
     },
     get content() {
       return (
         <div>
           <TypographyP className="font-mono">
-            Premium e-commerce storefront for Tesoro by Sania.
+            An enterprise-grade, full-stack Agentic RPA application where a multi-agent crew (Researcher, Analyst, Manager) autonomously opens a headless browser, navigates dynamic web pages, extracts unstructured text, and stores structured results in a relational database.
           </TypographyP>
-          <ProjectsLinks live={this.live} />
+          <TypographyP className="font-mono mt-4">
+            <strong>Key Features:</strong> Dynamic Pydantic schemas for universal data extraction, 3-Tier LLM Fallback (Ollama -&gt; OpenAI -&gt; Gemini) ensuring 99.9% uptime, real-time WebSocket telemetry, and AWS S3 payload archival. Hardened against OWASP Top 10 (SSRF, IDOR, XSS).
+          </TypographyP>
+          <ProjectsLinks live={this.live} github={this.github} />
+          {/* ADDED: Interactive Architecture Diagram */}
+          <ProjectArchitecture projectId={this.id} />
+          <SlideShow images={[PLACEHOLDER_IMG]} />
+        </div>
+      );
+    },
+  },
+  {
+    id: "lumanguide",
+    category: "AI / RAG System",
+    title: "LumanGuide",
+    src: PLACEHOLDER_IMG,
+    screenshots: [],
+    github: "https://github.com/Nilesh1735/LumanGuide-Onboarding-Illuminated-",
+    live: "#",
+    skills: {
+      frontend: [PROJECT_SKILLS.streamlit, PROJECT_SKILLS.python],
+      backend: [PROJECT_SKILLS.python, PROJECT_SKILLS.fastapi, PROJECT_SKILLS.langchain, PROJECT_SKILLS.openai, PROJECT_SKILLS.faiss, PROJECT_SKILLS.mongo],
+    },
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono">
+            Enterprise-grade agentic RAG system built on FastAPI, LangGraph, FAISS, and Streamlit. Features adaptive query routing, numeric fast-paths, and a Contextual Team Navigator for SME routing with resilient LLM/DB fallbacks. Includes JWT auth, persisted document picking, and a premium custom UI.
+          </TypographyP>
+          <TypographyP className="font-mono mt-4">
+            <strong>Key Features:</strong> Intelligent query classification (Index, General, Search), zero-latency numeric fast-path, ReAct-based multi-agent architecture, MongoDB state management with in-memory fallback, and dual-document SME expertise indexing from YAML config.
+          </TypographyP>
+          <ProjectsLinks live={this.live} github={this.github} />
+          {/* ADDED: Interactive Architecture Diagram */}
+          <ProjectArchitecture projectId={this.id} />
+          <SlideShow images={[PLACEHOLDER_IMG]} />
         </div>
       );
     },
