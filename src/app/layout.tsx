@@ -7,6 +7,7 @@ import Script from "next/script";
 import SiteFrame from "@/components/site-frame";
 import { Providers } from "@/components/providers";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { Analytics } from "@vercel/analytics/next";
 
 // Import the new UI overlays
 import ScrollProgress from "@/components/ui/scroll-progress";
@@ -92,6 +93,8 @@ export default function RootLayout({
         {process.env.NEXT_PUBLIC_GA_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
         )}
+        
+        <Analytics />
         
         {/* JSON-LD Structured Data moved INSIDE the body tag to satisfy Next.js 16 strict HTML rules */}
         <script
