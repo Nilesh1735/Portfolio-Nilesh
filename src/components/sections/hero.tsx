@@ -109,7 +109,7 @@ const HeroSection = () => {
                         "cursor-default sm:text-xl md:text-xl whitespace-nowrap bg-clip-text "
                       )}
                     >
-                      AI Engineer | Forward Deployed Engineer
+                      AI/ML Engineer | Forward Deployed Engineer
                     </p>
                   </BlurIn>
                 </div>
