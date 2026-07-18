@@ -26,7 +26,6 @@ function SmoothScroll({ children, isInsideModal = false }: LenisProps) {
     return () => gsap.ticker.remove(raf);
   }, [lenis]);
 
-  // Bypass Lenis if reduced motion is true
   if (reducedMotion) {
     return <>{children}</>;
   }
