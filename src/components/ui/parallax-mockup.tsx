@@ -35,12 +35,12 @@ export default function ParallaxMockup({ projectIndex }: ParallaxMockupProps) {
         "/images/omnicrew4.png"  // History Page
       ] 
     : [
-        "/images/luman1.png",
-        "/images/luman2.png",
-        "/images/luman3.png",
-        "/images/luman4.png",
-        "/images/luman5.png",
-        "/images/luman6.png",
+        "/images/Luman1.png",
+        "/images/Luman2.png",
+        "/images/Luman3.png",
+        "/images/Luman4.png",
+        "/images/Luman5.png",
+        "/images/Luman6.png",
       ];
 
   useEffect(() => {
