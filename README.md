@@ -1,33 +1,36 @@
-# 🚀 Nilesh Raj — 3D Portfolio
+# Nilesh Raj — Portfolio
 
-Interactive 3D developer portfolio with a keyboard where every keycap is a skill. Built with Next.js, React, TypeScript, GSAP, and Motion. Customized for [Nilesh Raj](https://github.com/Nilesh1735) — AI/ML Developer.
+Interactive 3D developer portfolio with a keyboard where every keycap is a skill. Built with Next.js, React, TypeScript, GSAP, and Motion. Customized for [Nilesh Raj](https://github.com/Nilesh1735) — AI/ML Engineer | Forward Deployed Engineer.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nilesh1735/NileshRaj-Portfolio)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nilesh1735/Portfolio-Nilesh)
 
-## ✨ Features
+## Features
 
 - **Interactive 3D Keyboard** — Custom Spline keyboard where each keycap represents a skill, revealing titles and descriptions on hover/press
 - **Buttery Animations** — GSAP + Motion powered scroll, hover, and reveal animations
+- **Lenis Smooth Scrolling** — Integrated Lenis for interpolated scrolling, perfectly synced with GSAP ScrollTrigger for a premium, gliding feel
+- **3D Parallax Mockups** — Interactive project displays that cycle through live screenshots with 3D tilt effects
 - **Space Theme** — Floating particles on a dark canvas for a cosmic vibe
 - **Light & Dark Mode** — Full theme support with cheeky disclaimer toasts
 - **Responsive** — Works across all screen sizes
-- **Contact Form** — Email delivery via Resend
+- **Secure Contact Form** — Email delivery via Resend with frontend validation
+- **Authentication UI** — Custom password visibility toggle and secure routing
 - **Analytics** _(optional)_ — Umami analytics integration
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technologies |
 |---|---|
 | **Framework** | Next.js 16, React 19, TypeScript |
 | **Styling** | Tailwind CSS, Shadcn UI |
-| **Animation** | GSAP, Motion |
+| **Animation** | GSAP, Motion, Lenis |
 | **3D** | Spline Runtime |
 | **Email** | Resend |
-| **Misc** | Lenis (smooth scroll), Zod, @teispace/next-themes |
+| **Misc** | Zod, lucide-react, @teispace/next-themes |
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -39,8 +42,8 @@ Interactive 3D developer portfolio with a keyboard where every keycap is a skill
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/Nilesh1735/NileshRaj-Portfolio.git
-    cd NileshRaj-Portfolio
+    git clone https://github.com/Nilesh1735/Portfolio-Nilesh.git
+    cd Portfolio-Nilesh
     ```
 
 2. **Install dependencies:**
@@ -70,22 +73,22 @@ Interactive 3D developer portfolio with a keyboard where every keycap is a skill
     npm run dev
     ```
 
-5. Open [http://localhost:3000](http://localhost:3000) and see the magic ✨
+5. Open [http://localhost:3000](http://localhost:3000) and see the magic.
 
 ---
 
-## 🎨 Personalization
+## Personalization
 
 All personal info is centralized in [`src/data/config.ts`](src/data/config.ts):
 
 ```ts
 const config = {
-  title: "Nilesh Raj | AI/ML Developer",
+  title: "Nilesh Raj | AI/ML Engineer & FDE",
   author: "Nilesh Raj",
   email: "nileshraj1735@gmail.com",
-  site: "https://nileshraj.vercel.app",
+  site: "https://portfolio-nilesh-pied.vercel.app",
   githubUsername: "Nilesh1735",
-  githubRepo: "NileshRaj-Portfolio",
+  githubRepo: "Portfolio-Nilesh",
   social: {
     linkedin: "https://www.linkedin.com/in/nilesh-raj-nr1735",
     github: "https://github.com/Nilesh1735",
@@ -108,12 +111,12 @@ Other files to customize:
 
 Screenshots live under `public/assets/projects-screenshots/<project-id>/`. Current projects:
 
-- [LumanGuide](https://github.com/Nilesh1735/LumanGuide-Onboarding-Illuminated-) — Enterprise-grade agentic RAG system
-- _More projects coming soon!_
+- [OMNICREW AI](https://github.com/Nilesh1735/OMNICREW-AI) — Autonomous Web Extraction & Enrichment Platform
+- [LumanGuide](https://github.com/Nilesh1735/LumanGuide-Onboarding-Illuminated) — Enterprise Agentic RAG System & Team Navigator
 
 ---
 
-## ⌨️ Updating the 3D Keyboard Skills
+## Updating the 3D Keyboard Skills
 
 The 3D keyboard keycaps are baked into a Spline file. To update the skills displayed on the keyboard:
 
@@ -138,21 +141,21 @@ The `SkillNames` enum, `SKILLS` record, and the Spline keycap names must all sta
 
 ---
 
-## 🔌 Realtime Features (Optional)
+## Realtime Features (Optional)
 
 The portfolio supports optional realtime features powered by a **separate backend API**:
 
-- 🖱️ **Live cursors** — See other visitors' cursors in realtime
-- 👥 **Online presence** — Shows who's currently on the site
-- 💬 **Chat** — Live chat between visitors
+- **Live cursors** — See other visitors' cursors in realtime
+- **Online presence** — Shows who's currently on the site
+- **Chat** — Live chat between visitors
 
 These features activate automatically when the `NEXT_PUBLIC_WS_URL` environment variable is set. Without it, the portfolio works perfectly fine as a static site — no realtime features, no backend dependency.
 
 ---
 
-## 🚀 Deployment
+## Deployment
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nilesh1735/NileshRaj-Portfolio)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nilesh1735/Portfolio-Nilesh)
 
 This site is deployed on **Vercel**. To deploy your own:
 
@@ -163,8 +166,8 @@ This site is deployed on **Vercel**. To deploy your own:
 
 ---
 
-## 📄 License & Credits
+## License & Credits
 
 This project is open source and available under the [MIT License](LICENSE).
 
-Built on the excellent [3d-portfolio](https://github.com/Naresh-Khatri/3d-portfolio) template by [Naresh Khatri](https://github.com/Naresh-Khatri). If you use this template, a credit or link back to the original repo would be much appreciated ❤️
+Built on the excellent [3d-portfolio](https://github.com/Naresh-Khatri/3d-portfolio) template by [Naresh Khatri](https://github.com/Naresh-Khatri). If you use this template, a credit or link back to the original repo would be much appreciated.
