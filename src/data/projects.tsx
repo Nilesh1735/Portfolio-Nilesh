@@ -35,7 +35,7 @@ const ProjectsLinks = ({ live, github }: { live?: string; github?: string }) => 
       {live && live !== "#" && (
         <Link className="font-mono underline flex gap-2" rel="noopener" target="_new" href={live}>
           <Button variant={"default"} size={"sm"}>
-            Visit Website
+            Deployed Live
             <ArrowUpRight className="ml-3 w-5 h-5" />
           </Button>
         </Link>
@@ -43,7 +43,7 @@ const ProjectsLinks = ({ live, github }: { live?: string; github?: string }) => 
       {github && github !== "#" && (
         <Link className="font-mono underline flex gap-2" rel="noopener" target="_new" href={github}>
           <Button variant={"outline"} size={"sm"}>
-            View on GitHub
+            Code
             <ArrowUpRight className="ml-3 w-5 h-5" />
           </Button>
         </Link>
@@ -149,7 +149,7 @@ const projects: Project[] = [
       return (
         <div>
           <TypographyP className="font-mono">
-            An enterprise Agentic RAG system built on a LangGraph state machine, designed to streamline engineering onboarding and knowledge management. Orchestrates dynamic document grading and query routing with strict AppSec measures (JWT RBAC, prompt injection guardrails, automated secret scanning).
+            An Agentic RAG system built on a LangGraph state machine, designed to streamline engineering onboarding and knowledge management. Orchestrates dynamic document grading and query routing with strict AppSec measures (JWT RBAC, prompt injection guardrails, automated secret scanning).
           </TypographyP>
           <TypographyP className="font-mono mt-4">
             <strong>Key Features:</strong> Premium split-screen SaaS UI with live agent telemetry, backed by MongoDB Atlas for persistent, isolated multi-tenant chat history and LangSmith for full LLMOps observability.
