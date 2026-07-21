@@ -85,6 +85,10 @@ const PROJECT_SKILLS = {
   streamlit: brand("Streamlit", "streamlit-mono.svg"),
   docker: brand("Docker", "docker-mono.svg"),
   aws: brand("AWS", "cloudflare-mono.svg"),
+  // Added mappings to prevent UI from breaking while keeping correct text labels
+  crewai: brand("CrewAI", "langchain-mono.svg"),
+  langgraph: brand("LangGraph", "langchain-mono.svg"),
+  redis: brand("Redis", "nodedotjs-mono.svg"),
 };
 
 export type Project = {
@@ -106,20 +110,20 @@ const projects: Project[] = [
     title: "OmniCrew AI",
     src: PLACEHOLDER_IMG,
     screenshots: [],
-    github: "https://github.com/Nilesh1735",
-    live: "#",
+    github: "https://github.com/Nilesh1735/OMNICREW-AI",
+    live: "https://omnicrew-ai.vercel.app/",
     skills: {
       frontend: [PROJECT_SKILLS.react, PROJECT_SKILLS.ts],
-      backend: [PROJECT_SKILLS.python, PROJECT_SKILLS.fastapi, PROJECT_SKILLS.langchain, PROJECT_SKILLS.docker, PROJECT_SKILLS.aws],
+      backend: [PROJECT_SKILLS.python, PROJECT_SKILLS.fastapi, PROJECT_SKILLS.crewai, PROJECT_SKILLS.docker, PROJECT_SKILLS.aws, PROJECT_SKILLS.redis],
     },
     get content() {
       return (
         <div>
           <TypographyP className="font-mono">
-            An enterprise-grade, full-stack Agentic RPA application where a multi-agent crew (Researcher, Analyst, Manager) autonomously opens a headless browser, navigates dynamic web pages, extracts unstructured text, and stores structured results in a relational database.
+            An autonomous multi-agent B2B lead generation platform that scrapes, structures, and enriches web data in real time. Engineered with a resilient 3-tier LLM fallback router (OpenAI → Mistral → Gemini) for 99.9% uptime, alongside autonomous Snov.io email enrichment and strict JWT multi-tenant data isolation.
           </TypographyP>
           <TypographyP className="font-mono mt-4">
-            <strong>Key Features:</strong> Dynamic Pydantic schemas for universal data extraction, 3-Tier LLM Fallback (Ollama -&gt; OpenAI -&gt; Gemini) ensuring 99.9% uptime, real-time WebSocket telemetry, and AWS S3 payload archival. Hardened against OWASP Top 10 (SSRF, IDOR, XSS).
+            <strong>Key Features:</strong> MD5 Redis caching for zero-token duplicate queries, semantic deduplication, AWS S3 archival, and live WebSocket telemetry streaming for full pipeline observability. Built with CrewAI and containerized via Docker.
           </TypographyP>
           <ProjectsLinks live={this.live} github={this.github} />
           {/* ADDED: Interactive Architecture Diagram */}
@@ -135,20 +139,20 @@ const projects: Project[] = [
     title: "LumanGuide",
     src: PLACEHOLDER_IMG,
     screenshots: [],
-    github: "https://github.com/Nilesh1735/LumanGuide-Onboarding-Illuminated-",
-    live: "#",
+    github: "https://github.com/Nilesh1735/LumanGuide-Onboarding-Illuminated",
+    live: "https://lumanguide-app.streamlit.app/",
     skills: {
       frontend: [PROJECT_SKILLS.streamlit, PROJECT_SKILLS.python],
-      backend: [PROJECT_SKILLS.python, PROJECT_SKILLS.fastapi, PROJECT_SKILLS.langchain, PROJECT_SKILLS.openai, PROJECT_SKILLS.faiss, PROJECT_SKILLS.mongo],
+      backend: [PROJECT_SKILLS.python, PROJECT_SKILLS.fastapi, PROJECT_SKILLS.langgraph, PROJECT_SKILLS.openai, PROJECT_SKILLS.faiss, PROJECT_SKILLS.mongo],
     },
     get content() {
       return (
         <div>
           <TypographyP className="font-mono">
-            Enterprise-grade agentic RAG system built on FastAPI, LangGraph, FAISS, and Streamlit. Features adaptive query routing, numeric fast-paths, and a Contextual Team Navigator for SME routing with resilient LLM/DB fallbacks. Includes JWT auth, persisted document picking, and a premium custom UI.
+            An enterprise Agentic RAG system built on a LangGraph state machine, designed to streamline engineering onboarding and knowledge management. Orchestrates dynamic document grading and query routing with strict AppSec measures (JWT RBAC, prompt injection guardrails, automated secret scanning).
           </TypographyP>
           <TypographyP className="font-mono mt-4">
-            <strong>Key Features:</strong> Intelligent query classification (Index, General, Search), zero-latency numeric fast-path, ReAct-based multi-agent architecture, MongoDB state management with in-memory fallback, and dual-document SME expertise indexing from YAML config.
+            <strong>Key Features:</strong> Premium split-screen SaaS UI with live agent telemetry, backed by MongoDB Atlas for persistent, isolated multi-tenant chat history and LangSmith for full LLMOps observability.
           </TypographyP>
           <ProjectsLinks live={this.live} github={this.github} />
           {/* ADDED: Interactive Architecture Diagram */}
