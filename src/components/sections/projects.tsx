@@ -8,7 +8,7 @@ import ParallaxMockup from "@/components/ui/parallax-mockup";
 const projects = [
   {
     title: "OMNICREW AI",
-    description: "An autonomous multi-agent B2B lead generation platform that scrapes, structures, and enriches web data in real time. Engineered with a resilient 3-tier LLM fallback router (OpenAI → Mistral → Gemini) for 99.9% uptime, alongside autonomous Snov.io email enrichment and strict JWT multi-tenant data isolation.",
+    description: "An autonomous multi-agent B2B lead generation platform that scrapes, structures, and enriches web data in real time. Engineered with a resilient 3-tier LLM fallback router (DeepSeek → Mistral → Gemini) for 99.9% uptime, alongside autonomous Snov.io email enrichment and strict JWT multi-tenant data isolation.",
     tech: ["Python", "CrewAI", "FastAPI", "Pydantic", "React", "Docker", "AWS S3 (Boto3)", "Redis", "Snov.io API"],
     github: "https://github.com/Nilesh1735/OMNICREW-AI", 
     live: "https://omnicrew-ai.vercel.app/", 
@@ -16,8 +16,8 @@ const projects = [
   },
   {
     title: "LumanGuide",
-    description: "An enterprise Agentic RAG system built on a LangGraph state machine, designed to streamline engineering onboarding and knowledge management. Orchestrates dynamic document grading and query routing with strict AppSec measures (JWT RBAC, prompt injection guardrails, automated secret scanning). Features a premium split-screen SaaS UI with live agent telemetry, backed by MongoDB Atlas for persistent, isolated multi-tenant chat history and LangSmith for full LLMOps observability.",
-    tech: ["Python", "LangGraph", "LangChain", "LangSmith", "FastAPI", "Mistral AI", "FAISS", "MongoDB Atlas", "Streamlit", "JWT RBAC"],
+    description: "An enterprise Agentic RAG system built on a LangGraph state machine, designed to streamline engineering onboarding and knowledge management. Orchestrates dynamic document grading and query routing with strict AppSec measures (JWT RBAC, prompt injection guardrails). Powered by DeepSeek (V3) for rapid chat generation and Google Gemini for FAISS embeddings, backed by MongoDB Atlas for persistent multi-tenant chat history.",
+    tech: ["Python", "LangGraph", "DeepSeek", "LangChain", "FastAPI", "Gemini", "FAISS", "MongoDB Atlas", "Streamlit", "JWT RBAC"],
     github: "https://github.com/Nilesh1735/LumanGuide-Onboarding-Illuminated",
     live: "https://lumanguide-app.streamlit.app/",
     featured: true,
