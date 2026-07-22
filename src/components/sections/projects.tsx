@@ -8,7 +8,7 @@ import ParallaxMockup from "@/components/ui/parallax-mockup";
 const projects = [
   {
     title: "OMNICREW AI",
-    description: "An autonomous multi-agent B2B lead generation platform that scrapes, structures, and enriches web data in real time. Engineered with a resilient 3-tier LLM fallback router (DeepSeek → Mistral → Gemini) for 99.9% uptime, alongside autonomous Snov.io email enrichment and strict JWT multi-tenant data isolation.",
+    description: "An autonomous multi-agent B2B lead generation platform that scrapes, structures, and enriches web data in real time. Features a resilient 3-tier LLM fallback router (DeepSeek → Mistral → Gemini) ensuring 99.9% uptime, alongside autonomous Snov.io email enrichment and strict JWT multi-tenant data isolation.",
     tech: ["Python", "CrewAI", "FastAPI", "Pydantic", "React", "Docker", "AWS S3 (Boto3)", "Redis", "Snov.io API"],
     github: "https://github.com/Nilesh1735/OMNICREW-AI", 
     live: "https://omnicrew-ai.vercel.app/", 
