@@ -8,7 +8,7 @@ const experiences = [
   {
     role: "AI/ML Trainee",
     company: "Technosavvys Education Technology",
-    location: "Prayagraj, UP",
+    location: "Remote", // <-- UPDATED TO REMOTE
     duration: "Feb 2026 - May 2026",
     points: [
       "Engineered a BERT-based text classifier via Hugging Face to automate sentiment analysis of 500+ student course reviews, achieving 88% accuracy through iterative hyperparameter tuning.",
