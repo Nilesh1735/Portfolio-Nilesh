@@ -228,30 +228,31 @@ export type Experience = {
   endDate: string;
   title: string;
   company: string;
+  location: string;
   description?: string[];
-  skills?: SkillNames[];
+  skills?: string[];
 };
 
 export const EXPERIENCE: Experience[] = [
   {
     id: 1,
-    startDate: "2023",
-    endDate: "2024",
+    startDate: "Feb 2026",
+    endDate: "May 2026",
     title: "AI/ML Trainee",
     company: "Technosavvys Education Technology",
+    location: "Remote",
     description: [
-      "Engineered and optimized Retrieval-Augmented Generation (RAG) pipelines using LangChain and FAISS for educational content retrieval.",
-      "Developed high-performance REST APIs using FastAPI to serve machine learning models and LLM agents.",
-      "Integrated multiple LLM providers (DeepSeek, Mistral, Gemini) into agentic workflows, reducing manual data processing time by 60%.",
-      "Set up a Streamlit dashboard backed by PostgreSQL for scheduled analysis, giving 10+ mentors a live view of student feedback across 5+ courses.",
+      "Engineered a BERT-based text classifier via Hugging Face to automate sentiment analysis of 500+ student course reviews, achieving 88% accuracy through iterative hyperparameter tuning.",
+      "Streamlined instructional workflows by reducing manual review time by 60%, while simultaneously boosting baseline model accuracy by 15% through advanced NLP techniques.",
+      "Deployed a real-time Streamlit dashboard supported by a scheduled SQLite backend, providing 10+ mentors with live sentiment tracking across 5+ active courses.",
     ],
     skills: [
-      SkillNames.PYTHON,
-      SkillNames.LANGCHAIN,
-      SkillNames.FASTAPI,
-      SkillNames.FAISS,
-      SkillNames.STREAMLIT,
-      SkillNames.POSTGRES,
+      "Python",
+      "BERT",
+      "Hugging Face",
+      "NLP",
+      "Streamlit",
+      "SQLite"
     ],
   },
 ];
