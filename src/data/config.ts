@@ -1,5 +1,5 @@
 const config = {
-  title: "Nilesh Raj | AI/ML & GenAI Developer",
+  title: "Nilesh Raj | AI/ML Engineer | FDE",
   description: {
     long: "Explore the portfolio of Nilesh Raj — AI/ML Engineer specializing in building practical applications with large language models, RAG pipelines, and agentic AI architectures using Python, LangChain, and FastAPI.",
     short:
