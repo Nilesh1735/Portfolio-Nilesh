@@ -1,5 +1,5 @@
 .header {
-  z-index: 9;
+  z-index: 1000; // must sit above page sections (which use z-10) so the open menu covers content
   // background-color: hsl(var(--background) / .8);
   position: fixed;
   width: 100%;
