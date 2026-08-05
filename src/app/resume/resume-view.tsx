@@ -7,8 +7,8 @@ import { Download, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ResumeDoodle from "./resume-doodle";
 
-// Drop the compiled PDF here: public/Nilesh_Raj_Resume.pdf
-const RESUME_PATH = "/Nilesh_Raj_Resume.pdf";
+// Served from public/resume.pdf
+const RESUME_PATH = "/resume.pdf";
 
 export default function ResumeView() {
   return (

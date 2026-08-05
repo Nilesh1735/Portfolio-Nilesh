@@ -6,6 +6,7 @@ import RemoteCursors from "@/components/realtime/remote-cursors";
 import ElasticCursor from "@/components/ui/ElasticCursor";
 import RadialMenu from "@/components/radial-menu/index";
 import MotionNudge from "@/components/motion-nudge";
+import AiChat from "@/components/ai-chat";
 import { usePerfProfile } from "@/hooks/use-perf-profile";
 
 export default function AppOverlays() {
@@ -30,6 +31,7 @@ export default function AppOverlays() {
       {!isResume && !disableDecorative && <ElasticCursor />}
       {isHome && <RadialMenu />}
       {isHome && <MotionNudge />}
+      <AiChat />
     </>
   );
 }

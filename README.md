@@ -7,6 +7,8 @@ Interactive 3D developer portfolio with a keyboard where every keycap is a skill
 ## Features
 
 - **Interactive 3D Keyboard** — Custom Spline keyboard where each keycap represents a skill, revealing titles and descriptions on hover/press
+- **"Ask My Portfolio" AI Chat** — A streamed chatbot (DeepSeek, via the OpenAI-compatible Vercel AI SDK) grounded in the résumé and projects, so recruiters can ask questions like _"What's his RAG experience?"_
+- **GitHub Activity** — Live profile stats, contribution graph, and top repositories pulled from the GitHub API
 - **Buttery Animations** — GSAP + Motion powered scroll, hover, and reveal animations
 - **Lenis Smooth Scrolling** — Integrated Lenis for interpolated scrolling, perfectly synced with GSAP ScrollTrigger for a premium, gliding feel
 - **3D Parallax Mockups** — Interactive project displays that cycle through live screenshots with 3D tilt effects
@@ -63,6 +65,7 @@ Interactive 3D developer portfolio with a keyboard where every keycap is a skill
     | Variable | Required | Description |
     |---|---|---|
     | `RESEND_API_KEY` | Yes | API key from [Resend](https://resend.com) for the contact form |
+    | `DEEPSEEK_API_KEY` | For AI chat | API key from [DeepSeek](https://platform.deepseek.com) for the "Ask My Portfolio" assistant |
     | `NEXT_PUBLIC_WS_URL` | No | WebSocket server URL for realtime features (cursors, chat, presence) |
     | `UMAMI_DOMAIN` | No | Umami analytics script URL |
     | `UMAMI_SITE_ID` | No | Umami website ID |

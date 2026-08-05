@@ -120,7 +120,7 @@ const projects: Project[] = [
       return (
         <div>
           <TypographyP className="font-mono">
-            An autonomous multi-agent B2B lead generation platform that scrapes, structures, and enriches web data in real time. Engineered with a resilient 3-tier LLM fallback router (OpenAI → Mistral → Gemini) for 99.9% uptime, alongside autonomous Snov.io email enrichment and strict JWT multi-tenant data isolation.
+            An autonomous multi-agent B2B lead generation platform that scrapes, structures, and enriches web data in real time. Engineered with a resilient 3-tier LLM fallback router (DeepSeek → Mistral → Gemini) for 99.9% uptime, alongside autonomous Snov.io email enrichment and strict JWT multi-tenant data isolation.
           </TypographyP>
           <TypographyP className="font-mono mt-4">
             <strong>Key Features:</strong> MD5 Redis caching for zero-token duplicate queries, semantic deduplication, AWS S3 archival, and live WebSocket telemetry streaming for full pipeline observability. Built with CrewAI and containerized via Docker.

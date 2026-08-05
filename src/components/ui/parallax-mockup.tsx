@@ -39,8 +39,6 @@ export default function ParallaxMockup({ projectIndex }: ParallaxMockupProps) {
         "/images/Luman2.png",
         "/images/Luman3.png",
         "/images/Luman4.png",
-        "/images/Luman5.png",
-        "/images/Luman6.png",
       ];
 
   useEffect(() => {
