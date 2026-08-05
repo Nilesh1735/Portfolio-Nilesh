@@ -255,8 +255,9 @@ body > canvas {
   height: 100vh;
   pointer-events: none;
   z-index: 0; /* Sits above the body background, but below your z-10+ content */
-  background: radial-gradient(circle at 50% -20%, hsl(var(--primary) / 0.15), transparent 50%);
-  transition: background 0.2s ease-out;
+  --spotlight-y: -20%;
+  background: radial-gradient(circle at 50% var(--spotlight-y), hsl(var(--primary) / 0.15), transparent 50%);
+  will-change: background;
 }
 
 /* Accessibility + low-end escape hatch: when the OS requests reduced motion,
