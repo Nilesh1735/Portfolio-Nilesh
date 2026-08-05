@@ -109,7 +109,7 @@ export default function GithubSection() {
                     >
                       <div className="mb-2 flex items-center gap-2">
                         <BookMarked size={16} className="text-primary shrink-0" />
-                        <span className="truncate font-semibold text-foreground">{repo.name}</span>
+                        <span className="truncate font-semibold text-foreground">{repo.label}</span>
                         <ArrowUpRight
                           size={16}
                           className="ml-auto shrink-0 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"

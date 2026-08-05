@@ -30,6 +30,7 @@ export async function getGithubStars(): Promise<number> {
 
 export type GithubRepo = {
   name: string;
+  label: string;
   description: string | null;
   url: string;
   language: string | null;
@@ -45,6 +46,24 @@ export type GithubProfile = {
 };
 
 const GITHUB_HEADERS: HeadersInit = { Accept: "application/vnd.github+json" };
+
+// Flagship repos always shown first, in this order.
+const PINNED_REPO_NAMES = ["OMNICREW-AI", "LumanGuide-Onboarding-Illuminated"];
+// Friendlier card labels (repo slugs are long / all-caps).
+const REPO_DISPLAY_NAMES: Record<string, string> = {
+  "OMNICREW-AI": "OmniCrew AI",
+  "LumanGuide-Onboarding-Illuminated": "LumanGuide",
+};
+// Fallback blurbs so flagship cards never show "No description provided".
+const REPO_FALLBACK_DESCRIPTIONS: Record<string, string> = {
+  "OMNICREW-AI":
+    "Autonomous multi-agent B2B lead-gen platform (CrewAI) with a 3-tier LLM fallback router and Redis caching.",
+  "LumanGuide-Onboarding-Illuminated":
+    "Enterprise Agentic RAG system on a LangGraph state machine with dynamic document grading and query routing.",
+};
+
+const pinIndex = (name: string) =>
+  PINNED_REPO_NAMES.findIndex((n) => n.toLowerCase() === name.toLowerCase());
 
 // Aggregates public profile stats + the visitor's most-starred repos.
 // All network failures degrade to null so the UI can hide the block cleanly.
@@ -82,12 +101,27 @@ export async function getGithubProfile(): Promise<GithubProfile | null> {
     const owned = reposData.filter((r) => !r.fork && !r.archived);
     const totalStars = owned.reduce((sum, r) => sum + (r.stargazers_count || 0), 0);
 
+    // Ranking: pinned flagships first, then repos with a description, then by
+    // stars/forks. Keeps empty "No description" repos out of the top slots.
     const topRepos: GithubRepo[] = [...owned]
-      .sort((a, b) => b.stargazers_count - a.stargazers_count || b.forks_count - a.forks_count)
+      .sort((a, b) => {
+        const pa = pinIndex(a.name);
+        const pb = pinIndex(b.name);
+        if (pa !== -1 || pb !== -1) {
+          if (pa === -1) return 1;
+          if (pb === -1) return -1;
+          return pa - pb;
+        }
+        const da = a.description ? 1 : 0;
+        const db = b.description ? 1 : 0;
+        if (da !== db) return db - da;
+        return b.stargazers_count - a.stargazers_count || b.forks_count - a.forks_count;
+      })
       .slice(0, 4)
       .map((r) => ({
         name: r.name,
-        description: r.description,
+        label: REPO_DISPLAY_NAMES[r.name] ?? r.name,
+        description: r.description ?? REPO_FALLBACK_DESCRIPTIONS[r.name] ?? null,
         url: r.html_url,
         language: r.language,
         stars: r.stargazers_count,
