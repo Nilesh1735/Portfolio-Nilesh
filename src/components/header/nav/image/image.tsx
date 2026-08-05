@@ -9,15 +9,29 @@ interface IndexProps {
 }
 
 const Index: React.FC<IndexProps> = ({ src, isActive }) => {
-  // Nav preview thumbnails are optional assets. If one is missing (404),
-  // hide the image container instead of rendering a broken image box.
-  const [failed, setFailed] = useState(false);
+  // Nav preview thumbnails are optional assets. Preload each one and only
+  // render the visible element once it has actually loaded — this prevents a
+  // missing image from briefly mounting a large box that shifts the layout
+  // (which moves links out from under the cursor and causes hover flicker).
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    setFailed(false);
+    setLoaded(false);
+    if (!src) return;
+
+    let cancelled = false;
+    const img = new window.Image();
+    img.onload = () => {
+      if (!cancelled) setLoaded(true);
+    };
+    img.src = src;
+
+    return () => {
+      cancelled = true;
+    };
   }, [src]);
 
-  if (failed) return null;
+  if (!loaded) return null;
 
   return (
     <motion.div
@@ -26,7 +40,7 @@ const Index: React.FC<IndexProps> = ({ src, isActive }) => {
       animate={isActive ? "open" : "closed"}
       className={styles.imageContainer}
     >
-      {/* Plain img so a missing preview degrades gracefully via onError. */}
+      {/* Plain img (asset already preloaded above, so no layout thrash). */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={src}
@@ -35,7 +49,6 @@ const Index: React.FC<IndexProps> = ({ src, isActive }) => {
         className="my-32 w-full h-auto object-cover"
         alt="Section preview"
         loading="lazy"
-        onError={() => setFailed(true)}
       />
     </motion.div>
   );

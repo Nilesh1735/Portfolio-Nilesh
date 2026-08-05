@@ -53,7 +53,17 @@ export default function Body({
     if (targets.length === 0) return;
 
     // Active = the last linked section whose top has passed the 35% viewport line.
+    // Near the bottom, lock the last section to prevent flickering.
     const computeActive = () => {
+      const scrollBottom = window.scrollY + window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+
+      // Within 200px of the bottom? Lock to the last section.
+      if (docHeight - scrollBottom < 200) {
+        setCurrentHref(targets[targets.length - 1].href);
+        return;
+      }
+
       const line = window.scrollY + window.innerHeight * 0.35;
       let active = targets[0].href;
       for (const t of targets) {
