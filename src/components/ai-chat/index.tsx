@@ -2,10 +2,12 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { Bot, Send, Sparkles, X, User } from "lucide-react";
+import { Bot, RotateCcw, Send, Sparkles, X, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type ChatMessage = { role: "user" | "assistant"; content: string };
+
+const STORAGE_KEY = "portfolio-chat-v1";
 
 const SUGGESTIONS = [
   "What's Nilesh's RAG experience?",
@@ -30,6 +32,29 @@ export default function AiChat() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const abortRef = useRef<AbortController | null>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  // Restore any prior conversation from this browser.
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      const saved = JSON.parse(raw) as ChatMessage[];
+      if (Array.isArray(saved) && saved.length > 1) setMessages(saved);
+    } catch {
+      /* ignore corrupt storage */
+    }
+  }, []);
+
+  // Persist the conversation (skip the lone greeting).
+  useEffect(() => {
+    try {
+      if (messages.length > 1) localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+      else localStorage.removeItem(STORAGE_KEY);
+    } catch {
+      /* ignore quota / private-mode errors */
+    }
+  }, [messages]);
 
   // Auto-scroll to the newest content.
   useEffect(() => {
@@ -40,6 +65,30 @@ export default function AiChat() {
   useEffect(() => {
     if (open) setTimeout(() => inputRef.current?.focus(), 250);
   }, [open]);
+
+  // Esc closes the panel while it is open.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  const resetChat = useCallback(() => {
+    abortRef.current?.abort();
+    setIsStreaming(false);
+    setError(null);
+    setInput("");
+    setMessages([GREETING]);
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch {
+      /* ignore */
+    }
+    setTimeout(() => inputRef.current?.focus(), 50);
+  }, []);
 
   const send = useCallback(
     async (text: string) => {
@@ -157,6 +206,10 @@ export default function AiChat() {
       <AnimatePresence>
         {open && (
           <motion.div
+            ref={panelRef}
+            role="dialog"
+            aria-modal="false"
+            aria-label="Portfolio AI assistant"
             initial={{ opacity: 0, y: 24, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.96 }}
@@ -178,6 +231,16 @@ export default function AiChat() {
               <span className="ml-auto flex items-center gap-1.5 text-[11px] text-muted-foreground">
                 <span className="h-2 w-2 rounded-full bg-green-500" /> Online
               </span>
+              {messages.length > 1 && (
+                <button
+                  onClick={resetChat}
+                  aria-label="Clear conversation"
+                  title="Clear conversation"
+                  className="ml-1 flex h-7 w-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground cursor-can-hover"
+                >
+                  <RotateCcw className="h-4 w-4" />
+                </button>
+              )}
             </div>
 
             {/* Messages */}

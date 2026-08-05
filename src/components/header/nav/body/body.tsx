@@ -28,11 +28,54 @@ export default function Body({
 }: BodyProps) {
   const params = useParams();
   const [currentHref, setCurrentHref] = useState("/");
+
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const { pathname, hash } = window.location;
-    setCurrentHref(pathname + hash);
-  }, [params]);
+    const { pathname } = window.location;
+
+    // Only scroll-spy on the single-page home route.
+    if (pathname !== "/") {
+      setCurrentHref(pathname + window.location.hash);
+      return;
+    }
+
+    // Map each nav link to the id of the section it points at.
+    const hrefToId = (href: string) => {
+      if (href === "/") return "hero";
+      const i = href.indexOf("#");
+      return i === -1 ? null : href.slice(i + 1);
+    };
+
+    const targets = links
+      .map((l) => ({ href: l.href, el: document.getElementById(hrefToId(l.href) ?? "") }))
+      .filter((t): t is { href: string; el: HTMLElement } => Boolean(t.el));
+
+    if (targets.length === 0) return;
+
+    // Active = the last linked section whose top has passed the 35% viewport line.
+    const computeActive = () => {
+      const line = window.scrollY + window.innerHeight * 0.35;
+      let active = targets[0].href;
+      for (const t of targets) {
+        if (t.el.offsetTop <= line) active = t.href;
+      }
+      setCurrentHref(active);
+    };
+
+    computeActive();
+    let raf = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(computeActive);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [params, links]);
 
   const getChars = (word: string) => {
     let chars: React.JSX.Element[] = [];

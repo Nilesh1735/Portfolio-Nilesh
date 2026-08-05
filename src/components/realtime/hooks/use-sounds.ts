@@ -6,30 +6,37 @@ export const useSounds = () => {
   const releaseBufferRef = useRef<AudioBuffer | null>(null);
 
   useEffect(() => {
-    const loadSound = async () => {
+    let ctx: AudioContext | null = null;
+
+    // Decode one optional sound asset. Missing files (404) or unsupported
+    // audio are treated as "no sound" rather than surfaced as errors — these
+    // assets are cosmetic and not shipped in every build.
+    const loadBuffer = async (url: string): Promise<AudioBuffer | null> => {
+      if (!ctx) return null;
       try {
-        const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
-        if (!AudioContext) return;
-
-        const ctx = new AudioContext();
-        audioContextRef.current = ctx;
-
-        const response = await fetch('/assets/keycap-sounds/press.mp3');
-        const arrayBuffer = await response.arrayBuffer();
-        const decodedBuffer = await ctx.decodeAudioData(arrayBuffer);
-        pressBufferRef.current = decodedBuffer;
-
-        const releaseResponse = await fetch('/assets/keycap-sounds/release.mp3');
-        const releaseArrayBuffer = await releaseResponse.arrayBuffer();
-        const releaseDecodedBuffer = await ctx.decodeAudioData(releaseArrayBuffer);
-        releaseBufferRef.current = releaseDecodedBuffer;
-
-        const confettiResponse = await fetch('/assets/sounds/vine-boom.mp3');
-        const confettiArrayBuffer = await confettiResponse.arrayBuffer();
-        confettiBufferRef.current = await ctx.decodeAudioData(confettiArrayBuffer);
-      } catch (error) {
-        console.error("Failed to load keycap sound", error);
+        const res = await fetch(url);
+        if (!res.ok) return null;
+        const type = res.headers.get("content-type") ?? "";
+        // A 404 handled by the app returns HTML, not audio — skip it.
+        if (type.includes("text/html")) return null;
+        const arrayBuffer = await res.arrayBuffer();
+        if (arrayBuffer.byteLength === 0) return null;
+        return await ctx.decodeAudioData(arrayBuffer);
+      } catch {
+        return null;
       }
+    };
+
+    const loadSound = async () => {
+      const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
+      if (!AudioContext) return;
+
+      ctx = new AudioContext();
+      audioContextRef.current = ctx;
+
+      pressBufferRef.current = await loadBuffer("/assets/keycap-sounds/press.mp3");
+      releaseBufferRef.current = await loadBuffer("/assets/keycap-sounds/release.mp3");
+      confettiBufferRef.current = await loadBuffer("/assets/sounds/vine-boom.mp3");
     };
 
     loadSound();

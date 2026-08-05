@@ -1,17 +1,43 @@
-# Nilesh Raj - AI/ML Engineer & GenAI Developer
+# Nilesh Raj - AI/ML Engineer & Forward Deployed Engineer
 
 ## Profile
-Nilesh Raj is an AI/ML Engineer specializing in Agentic AI, RAG pipelines, and Full-Stack AI development. 
-He builds enterprise-grade, production-ready AI automation systems using Python, LangGraph, FastAPI, and React.
+Nilesh Raj is an AI/ML Engineer and Forward Deployed Engineer specializing in NLP,
+fine-tuning transformer models, Retrieval-Augmented Generation (RAG) pipelines, and
+agentic AI systems. He builds and deploys production-ready AI applications with large
+language models. NVIDIA-certified in LLM application development.
+
+## Education
+BCA with IBM Specialization (AI & Data Science), United University Prayagraj (2022-2025).
 
 ## Core Projects
-1. OmniCrew AI: An autonomous multi-agent RPA platform for sovereign web data extraction.
-2. LumanGuide: An enterprise Agentic RAG system with LangGraph orchestration and LLMOps observability.
+1. OmniCrew AI: An autonomous multi-agent B2B lead-generation platform built with CrewAI,
+   featuring a 3-tier LLM fallback router (DeepSeek -> Mistral -> Gemini) for 99.9% task
+   completion, Redis-backed MD5 caching, and JWT multi-tenant data isolation.
+   Live: https://omnicrew-ai.vercel.app/ | Code: https://github.com/Nilesh1735/OMNICREW-AI
+2. LumanGuide: An enterprise Agentic RAG system on a LangGraph state machine with dynamic
+   document grading, query routing, FAISS vector search, prompt-injection guardrails, JWT
+   RBAC, and LangSmith LLMOps observability.
+   Live: https://lumanguide-app.streamlit.app/ | Code: https://github.com/Nilesh1735/LumanGuide-Onboarding-Illuminated
+
+## Experience
+AI/ML Trainee at Technosavvys Education Technology (Remote, Feb-May 2026): Fine-tuned a
+BERT text classifier on 500+ reviews (88% accuracy, +15% over baseline) with Hugging Face,
+and deployed a real-time Streamlit sentiment dashboard for 10+ mentors.
 
 ## Skills
-Python, LangChain, LangGraph, FastAPI, Docker, AWS, FAISS, RAG, SQL, PineCone, VectorDatabases.
+AI & GenAI: LangGraph, CrewAI, LangChain (LCEL), Agentic AI, RAG Pipelines, LLMs, Prompt
+Engineering, NLP, BERT, Transformers, Semantic Chunking, Embedding Models, Vector Search
+(FAISS), OpenAI API, Mistral AI, DeepSeek, Gemini API, Tavily, NVIDIA NIM, LangSmith.
+ML Engineering: PyTorch, Scikit-learn, Hugging Face, Pandas, NumPy, Fine-tuning, Transfer
+Learning, Hyperparameter Tuning, Sentiment Analysis.
+Deployment & Infra: Python, FastAPI, Docker, Streamlit, REST APIs, Redis, AWS (S3, EC2,
+Lambda), Git, CI/CD, Pydantic.
+Data & Storage: SQL, MongoDB Atlas, MySQL, PostgreSQL, SQLite, Vector Databases.
+
+## Certifications
+Building LLM Applications with Prompt Engineering - NVIDIA Deep Learning Institute (2025).
 
 ## Contact
 Email: nileshraj1735@gmail.com
 GitHub: https://github.com/Nilesh1735
-LinkedIn: https://www.linkedin.com/in/nilesh-raj-nr1735/
+LinkedIn: https://www.linkedin.com/in/nilesh-raj-nr1735

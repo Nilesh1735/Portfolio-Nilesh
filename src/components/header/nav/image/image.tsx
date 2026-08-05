@@ -1,9 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import Image from "next/image";
 import styles from "./style.module.scss";
 import { opacity } from "../../anim";
-import { cn } from "@/lib/utils";
 
 interface IndexProps {
   src: string;
@@ -11,6 +9,16 @@ interface IndexProps {
 }
 
 const Index: React.FC<IndexProps> = ({ src, isActive }) => {
+  // Nav preview thumbnails are optional assets. If one is missing (404),
+  // hide the image container instead of rendering a broken image box.
+  const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    setFailed(false);
+  }, [src]);
+
+  if (failed) return null;
+
   return (
     <motion.div
       variants={opacity}
@@ -18,13 +26,16 @@ const Index: React.FC<IndexProps> = ({ src, isActive }) => {
       animate={isActive ? "open" : "closed"}
       className={styles.imageContainer}
     >
-      <Image
+      {/* Plain img so a missing preview degrades gracefully via onError. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
         src={src}
         width={400}
         height={400}
         className="my-32 w-full h-auto object-cover"
-        alt={"Image"}
-        // priority={true}
+        alt="Section preview"
+        loading="lazy"
+        onError={() => setFailed(true)}
       />
     </motion.div>
   );
