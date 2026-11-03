@@ -1,13 +1,18 @@
+import { config } from "@/data/config";
+
+// Sourced from config so these can never drift from the rest of the site.
 const footer: { title: string; href: string }[] = [
-  // Blog entry removed.
-  // Added real professional links so the footer isn't empty.
+  {
+    title: "AgentNine",
+    href: "https://agentnine.pro",
+  },
   {
     title: "GitHub",
-    href: "https://github.com/Nilesh1735",
+    href: config.social.github,
   },
   {
     title: "LinkedIn",
-    href: "https://www.linkedin.com/in/nilesh-raj-nr1735/",
+    href: config.social.linkedin,
   },
 ];
 

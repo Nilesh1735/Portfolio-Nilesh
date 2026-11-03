@@ -90,7 +90,7 @@ const HeroSection = () => {
                           )}
                         >
                           {config.author.split(" ")[0]}
-                          <br className="md:block hiidden" />
+                          <br className="hidden md:block" />
                           {config.author.split(" ")[1]}
                         </h1>
                       </TooltipTrigger>
@@ -98,7 +98,7 @@ const HeroSection = () => {
                         side="top"
                         className="dark:bg-white dark:text-black"
                       >
-                        building AI that actually works
+                        building agentic AI that actually ships
                       </TooltipContent>
                     </Tooltip>
                   </BlurIn>
@@ -109,7 +109,7 @@ const HeroSection = () => {
                         "cursor-default sm:text-xl md:text-xl whitespace-nowrap bg-clip-text "
                       )}
                     >
-                      AI/ML Engineer | Forward Deployed Engineer
+                      Founder &amp; AI Engineer @AgentNine
                     </p>
                   </BlurIn>
                 </div>

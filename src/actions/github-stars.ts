@@ -48,14 +48,17 @@ export type GithubProfile = {
 const GITHUB_HEADERS: HeadersInit = { Accept: "application/vnd.github+json" };
 
 // Flagship repos always shown first, in this order.
-const PINNED_REPO_NAMES = ["OMNICREW-AI", "LumanGuide-Onboarding-Illuminated"];
+const PINNED_REPO_NAMES = ["AgentNine", "OMNICREW-AI", "LumanGuide-Onboarding-Illuminated"];
 // Friendlier card labels (repo slugs are long / all-caps).
 const REPO_DISPLAY_NAMES: Record<string, string> = {
+  AgentNine: "AgentNine",
   "OMNICREW-AI": "OmniCrew AI",
   "LumanGuide-Onboarding-Illuminated": "LumanGuide",
 };
 // Fallback blurbs so flagship cards never show "No description provided".
 const REPO_FALLBACK_DESCRIPTIONS: Record<string, string> = {
+  AgentNine:
+    "Open-source AI agent directory with per-listing setup steps, access requirements and verification context.",
   "OMNICREW-AI":
     "Autonomous multi-agent B2B lead-gen platform (CrewAI) with a 3-tier LLM fallback router and Redis caching.",
   "LumanGuide-Onboarding-Illuminated":
