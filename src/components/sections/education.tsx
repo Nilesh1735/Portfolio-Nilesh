@@ -6,20 +6,36 @@ import { GraduationCap, Calendar, MapPin, Award } from "lucide-react";
 
 const education = [
   {
-    degree: "BCA with IBM Specialization (AI & Data Science)",
-    institution: "United University Prayagraj",
+    degree: "BCA, Artificial Intelligence (IBM Specialization)",
+    institution: "United University",
     location: "Prayagraj, UP",
-    duration: "Jun 2022 - May 2025",
+    duration: "Aug 2022 - May 2025",
   },
 ];
 
 const certifications = [
+  {
+    title: "Introduction to Generative AI - Art of the Possible",
+    issuer: "Amazon Web Services (AWS)",
+    year: "May 2026",
+    points: [
+      "Covered foundation models, prompt engineering, responsible AI, and real-world applications of AI across business and technology.",
+    ],
+  },
   {
     title: "Building LLM Applications with Prompt Engineering",
     issuer: "NVIDIA Deep Learning Institute",
     year: "2025",
     points: [
       "Built LLM-powered applications using NVIDIA NIM (Llama 3.1) and LangChain with live API integration and Pydantic-structured output validation across a capstone agentic workflow.",
+    ],
+  },
+  {
+    title: "Introduction to Python",
+    issuer: "IBM",
+    year: "Apr 2023",
+    points: [
+      "Python fundamentals through IBM's CognitiveClass track, covering data structures, control flow, and scripting foundations.",
     ],
   },
 ];

@@ -24,6 +24,11 @@ export enum SkillNames {
   DEEPSEEK = "deepseek",
   MISTRAL = "mistral",
   LANGSMITH = "langsmith",
+  NEXTJS = "nextjs",
+  REACT = "react",
+  TYPESCRIPT = "typescript",
+  SUPABASE = "supabase",
+  TAILWIND = "tailwind",
 }
 
 export type Skill = {
@@ -220,6 +225,46 @@ export const SKILLS: Record<SkillNames, Skill> = {
     color: "#F1F1F1",
     icon: "https://api.iconify.design/mdi:chart-areaspline.svg?color=%23F1F1F1",
   },
+  [SkillNames.NEXTJS]: {
+    id: 24,
+    name: "nextjs",
+    label: "Next.js",
+    shortDescription: "App Router, server components, and edge-ready rendering for production sites",
+    color: "#ffffff",
+    icon: "https://api.iconify.design/simple-icons:nextdotjs.svg?color=white",
+  },
+  [SkillNames.REACT]: {
+    id: 25,
+    name: "react",
+    label: "React",
+    shortDescription: "Component-driven UIs with hooks and modern concurrent rendering",
+    color: "#149ECA",
+    icon: "https://api.iconify.design/logos:react.svg",
+  },
+  [SkillNames.TYPESCRIPT]: {
+    id: 26,
+    name: "typescript",
+    label: "TypeScript",
+    shortDescription: "End-to-end type safety across frontend, API routes, and data models",
+    color: "#3178C6",
+    icon: "https://api.iconify.design/logos:typescript-icon.svg",
+  },
+  [SkillNames.SUPABASE]: {
+    id: 27,
+    name: "supabase",
+    label: "Supabase",
+    shortDescription: "Postgres, auth, and row-level security powering AgentNine in production",
+    color: "#3FCF8E",
+    icon: "https://api.iconify.design/logos:supabase-icon.svg",
+  },
+  [SkillNames.TAILWIND]: {
+    id: 28,
+    name: "tailwind",
+    label: "Tailwind CSS",
+    shortDescription: "Utility-first styling for fast, consistent, responsive interfaces",
+    color: "#06B6D4",
+    icon: "https://api.iconify.design/logos:tailwindcss-icon.svg",
+  },
 };
 
 export type Experience = {
@@ -236,15 +281,41 @@ export type Experience = {
 export const EXPERIENCE: Experience[] = [
   {
     id: 1,
+    startDate: "Jun 2026",
+    endDate: "Present",
+    title: "Founder & AI Engineer",
+    company: "AgentNine",
+    location: "Varanasi, India",
+    description: [
+      "Founded and shipped AgentNine (agentnine.pro), an independent directory of open-source AI agents where every listing carries its source repository, install steps for Windows, macOS and Linux, the access the agent requests, and an explicit note of what is still undocumented.",
+      "Built the product on Next.js App Router, React 19, TypeScript and Tailwind CSS with Supabase Postgres for auth and data, deployed on Vercel and covered by a Vitest suite.",
+      "Designed the browse experience around category filters, operating-system and API-key facets, Fuse.js full-text search, and side-by-side comparison of up to three agents with no account required.",
+      "Defined a 5-point verification checklist every listing passes before publication, and grew the catalogue past 40 new listings across coding, automation, research and content agents.",
+      "Lead product direction and technical decisions, working with a small team across product, engineering and launch.",
+    ],
+    skills: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Supabase",
+      "Vitest",
+      "Vercel",
+      "Product Strategy",
+    ],
+  },
+  {
+    id: 2,
     startDate: "Feb 2026",
     endDate: "May 2026",
     title: "AI/ML Trainee",
     company: "Technosavvys Education Technology",
     location: "Remote",
     description: [
-      "Engineered a BERT-based text classifier via Hugging Face to automate sentiment analysis of 500+ student course reviews, achieving 88% accuracy through iterative hyperparameter tuning.",
-      "Streamlined instructional workflows by reducing manual review time by 60%, while simultaneously boosting baseline model accuracy by 15% through advanced NLP techniques.",
-      "Deployed a real-time Streamlit dashboard supported by a scheduled SQLite backend, providing 10+ mentors with live sentiment tracking across 5+ active courses.",
+      "Engineered a BERT-based text classifier with Hugging Face to automate sentiment tagging on 500+ student course reviews per batch, refined through iterative hyperparameter tuning.",
+      "Deployed a real-time Streamlit dashboard backed by SQLite, cutting manual review time for mentors across multiple active courses.",
+      "Optimised NLP preprocessing pipelines, improving baseline model accuracy and accelerating weekly feedback-report generation.",
+      "Partnered directly with course mentors to translate raw classifier output into an actionable, non-technical dashboard view.",
     ],
     skills: [
       "Python",
@@ -252,7 +323,7 @@ export const EXPERIENCE: Experience[] = [
       "Hugging Face",
       "NLP",
       "Streamlit",
-      "SQLite"
+      "SQLite",
     ],
   },
 ];

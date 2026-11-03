@@ -5,45 +5,81 @@
 export const KNOWLEDGE_BASE = `
 # About Nilesh Raj
 
-Nilesh Raj is an AI/ML Engineer and Forward Deployed Engineer based in India
-(Prayagraj, Uttar Pradesh). He specializes in building and deploying practical
-applications with large language models: NLP, fine-tuning transformer models,
-Retrieval-Augmented Generation (RAG) pipelines, and agentic AI systems.
+Nilesh Raj (he/him) is the Founder & AI Engineer at AgentNine, based in Varanasi,
+Uttar Pradesh, India. He builds and ships AI systems end to end, from architecture
+to live deployment: agentic AI, Retrieval-Augmented Generation (RAG) pipelines,
+NLP and fine-tuned transformer models. He treats JWT RBAC, rate-limit handling,
+load balancing and observability as seriously as prompt design and model accuracy.
+
+He is open to AI Engineer and Applied AI roles, remote or hybrid.
 
 Contact:
 - Email: nileshraj1735@gmail.com
 - Phone: +91-8887522416
 - GitHub: https://github.com/Nilesh1735
-- LinkedIn: https://www.linkedin.com/in/nilesh-raj-nr1735
+- LinkedIn: https://www.linkedin.com/in/nilesh-raj-ai
+- Portfolio: https://nileshraj-portfolio.vercel.app
+- AgentNine: https://agentnine.pro
 
 # Summary
 
-AI/ML Engineer with hands-on experience in NLP, fine-tuning transformer models,
-and agentic AI systems. Built and deployed BERT text classifiers, LangGraph
-state-machine RAG pipelines, and CrewAI multi-agent platforms in production.
-Experienced with PyTorch, Scikit-learn, Hugging Face, LangChain, vector
-databases, and FastAPI microservices. NVIDIA-certified in LLM application
-development.
+AI engineer and founder. Toolkit: Python, LangGraph, CrewAI, LangChain, FastAPI
+and Docker, plus Next.js, React, TypeScript and Supabase on the product side.
+Built and deployed BERT text classifiers, LangGraph state-machine RAG pipelines,
+CrewAI multi-agent platforms, and AgentNine, a live open-source AI agent directory.
+NVIDIA-certified in LLM application development.
 
 # Education
 
-- BCA with IBM Specialization (AI & Data Science), United University Prayagraj,
-  Prayagraj, UP — June 2022 to May 2025.
+- BCA, Artificial Intelligence (IBM Specialization), United University,
+  Prayagraj, UP — August 2022 to May 2025. Grade: 8.
 
 # Experience
 
+## Founder & AI Engineer — AgentNine (Varanasi, India), Jun 2026 – Present
+- Founded and shipped AgentNine (https://agentnine.pro), an independent,
+  community-led directory of open-source AI agents. Each listing links back to its
+  upstream repository and sets out install steps for Windows, macOS and Linux, the
+  access the agent requests (network, files, ports, environment variables), the
+  version reviewed and when — and states plainly what is still undocumented.
+- Built on Next.js App Router, React 19, TypeScript and Tailwind CSS 4, with
+  Supabase Postgres for auth and data, a Vitest suite, and deployment on Vercel.
+- Browse experience built around category filters, operating-system and API-key
+  facets, Fuse.js full-text search, and side-by-side comparison of up to three
+  agents with no account required. Saved agents via Google or email sign-in.
+- Defined a 5-point verification checklist every listing passes before publication;
+  grew the catalogue past 40 new listings across coding, automation, research and
+  content agents.
+- Leads product direction and technical decisions, working with a small team across
+  product, engineering and launch.
+- Note: AgentNine's listing notes are a starting point, not a security audit or an
+  endorsement of any listed project.
+
 ## AI/ML Trainee (Internship) — Technosavvys Education Technology (Remote), Feb 2026 – May 2026
-- Fine-tuned a BERT text classifier on 500+ student reviews using Hugging Face,
-  achieving 88% accuracy (a 15% lift over the baseline TF-IDF model) via learning
-  rate scheduling and dropout tuning.
-- Engineered text normalisation and feature-extraction improvements to the NLP
-  preprocessing pipeline, automating the weekly reporting workflow and eliminating
-  manual data entry.
-- Deployed a real-time Streamlit dashboard backed by SQLite, automating sentiment
-  aggregation for 10+ mentors across 5+ courses and reducing manual report
-  generation time from hours to minutes.
+- Engineered a BERT-based text classifier with Hugging Face to automate sentiment
+  tagging on 500+ student course reviews per batch, refined through iterative
+  hyperparameter tuning — reaching 88% accuracy, a 15% lift over a TF-IDF baseline,
+  via learning-rate scheduling and dropout tuning.
+- Deployed a real-time Streamlit dashboard backed by SQLite, cutting manual review
+  time for mentors across multiple active courses (10+ mentors, 5+ courses).
+- Optimised NLP preprocessing pipelines, improving baseline model accuracy and
+  accelerating weekly feedback-report generation.
+- Partnered directly with course mentors to translate raw classifier output into an
+  actionable, non-technical dashboard view.
 
 # Projects
+
+## AgentNine — Open-source AI agent directory (live product)
+Stack: Next.js App Router, React 19, TypeScript, Tailwind CSS 4, Supabase
+(Postgres + auth), Fuse.js, Vitest, Vercel.
+- Community-led directory for discovering open-source AI agent projects, bringing
+  together upstream repositories, practical setup notes, access requirements and
+  verification context.
+- Categories: automation, coding, content and research agents.
+- Features category and faceted filtering (OS, API key, recently updated),
+  full-text search, three-way side-by-side comparison with no account needed, and
+  saved agents for signed-in users.
+- Live: https://agentnine.pro — Code: https://github.com/Nilesh1735/AgentNine
 
 ## OmniCrew AI — Autonomous multi-agent B2B lead generation platform
 Stack: Python, CrewAI, LangChain, FastAPI, Pydantic, React, Docker, Redis,
@@ -58,6 +94,8 @@ AWS S3 (Boto3), Snov.io API.
   reducing redundant database writes by an estimated 35%.
 - Features autonomous Snov.io email enrichment, strict JWT multi-tenant data
   isolation, AWS S3 archival, and live WebSocket telemetry streaming.
+- Hardened against SSRF by resolving target URLs and rejecting private, local and
+  cloud-metadata IP ranges before any fetch.
 - Live: https://omnicrew-ai.vercel.app/ — Code: https://github.com/Nilesh1735/OMNICREW-AI
 
 ## LumanGuide — Enterprise Agentic RAG system & team navigator
@@ -66,11 +104,14 @@ DeepSeek, Gemini, MongoDB Atlas, JWT RBAC.
 - Architected an Agentic RAG system on a LangGraph state machine with dynamic
   document grading and query routing, cutting retrieval latency by 30% over a
   naive RAG baseline.
+- Built a stateful grade-and-rewrite cycle: an LLM-as-Judge node scores retrieval
+  quality and routes poor results to a query-rewrite node that loops back.
 - Built a FAISS vector store with semantic chunking and embedding models for
   sub-second document retrieval; migrated user auth from SQLite to MongoDB Atlas,
   eliminating 100% of data-wipe incidents.
-- Hardened with prompt-injection guardrails, JWT RBAC, and automated regex secret
-  scanning, achieving 100% credential redaction before vector embedding.
+- Hardened with a dedicated prompt-injection guardrail node, JWT RBAC, and
+  automated regex secret scanning, achieving 100% credential redaction before
+  vector embedding.
 - Integrated LangSmith for LLMOps observability — tracing retrieval accuracy,
   token usage, and pipeline latency across all queries.
 - Live: https://lumanguide-app.streamlit.app/ — Code: https://github.com/Nilesh1735/LumanGuide-Onboarding-Illuminated
@@ -80,11 +121,14 @@ DeepSeek, Gemini, MongoDB Atlas, JWT RBAC.
 AI & GenAI: LangGraph, CrewAI, LangChain (LCEL), Agentic AI Systems,
 Retrieval-Augmented Generation, RAG Pipelines, LLMs, Prompt Engineering, NLP,
 BERT, Transformers, Semantic Chunking, Embedding Models, Vector Search (FAISS),
-OpenAI API, Mistral AI, DeepSeek V3, Gemini API, Tavily, NVIDIA NIM, LangSmith.
+OpenAI API, Mistral AI, DeepSeek, Gemini API, Tavily, NVIDIA NIM, LangSmith.
 
 ML Engineering: PyTorch, Scikit-learn, Hugging Face, Pandas, NumPy, Fine-tuning,
 Transfer Learning, Model Training, Hyperparameter Tuning, Feature Engineering,
 Data Preprocessing, Model Evaluation, Sentiment Analysis.
+
+Product & Web: Next.js (App Router), React 19, TypeScript, Tailwind CSS,
+Supabase, Vitest, Vercel.
 
 Deployment & Infrastructure: Python, FastAPI, Docker, Streamlit, REST APIs,
 Redis, AWS (S3, EC2, Lambda), Git, CI/CD, Pydantic.
@@ -93,13 +137,18 @@ Data & Storage: SQL, MongoDB Atlas, MySQL, PostgreSQL, SQLite, Vector Databases.
 
 # Certifications
 
+- Introduction to Generative AI – Art of the Possible — Amazon Web Services (AWS),
+  issued May 2026. Foundation models, prompt engineering, responsible AI, and
+  real-world applications of AI across business and technology.
 - Building LLM Applications with Prompt Engineering — NVIDIA Deep Learning
   Institute (2025). Built LLM-powered applications using NVIDIA NIM (Llama 3.1)
   and LangChain with live API integration and Pydantic-structured output
   validation across a capstone agentic workflow.
+- Introduction to Python — IBM (April 2023). CognitiveClass track covering Python
+  fundamentals, data structures and scripting.
 `;
 
-export const SYSTEM_PROMPT = `You are "Nilesh's Portfolio Assistant" — a friendly, concise AI guide embedded in Nilesh Raj's portfolio website. Nilesh is an AI/ML Engineer and Forward Deployed Engineer.
+export const SYSTEM_PROMPT = `You are "Nilesh's Portfolio Assistant" — a friendly, concise AI guide embedded in Nilesh Raj's portfolio website. Nilesh is the Founder & AI Engineer at AgentNine.
 
 Your job is to answer questions from recruiters, hiring managers, and visitors about Nilesh's background, skills, projects, and experience, using ONLY the knowledge provided below.
 

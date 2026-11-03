@@ -1,35 +1,43 @@
 import { Link } from "@/types";
 
+// `thumbnail` is left empty where no preview asset ships in /public.
+// The nav image component short-circuits on an empty src, so this avoids
+// firing a 404 for every link each time the menu opens.
 const links: Link[] = [
   {
     title: 'Home',
     href: '/',
-    thumbnail: '/assets/nav-link-previews/landing.png'
+    thumbnail: ''
   },
   {
     title: 'Skills',
     href: '/#skills',
-    thumbnail: '/assets/nav-link-previews/skills.png'
+    thumbnail: ''
+  },
+  {
+    title: 'Experience',
+    href: '/#experience',
+    thumbnail: ''
   },
   {
     title: 'Education',
     href: '/#education',
-    thumbnail: '/assets/nav-link-previews/projects.png'
+    thumbnail: ''
   },
   {
     title: 'Projects',
     href: '/#projects',
-    thumbnail: '/assets/nav-link-previews/projects.png'
+    thumbnail: ''
   },
   {
     title: 'GitHub',
     href: '/#github',
-    thumbnail: '/assets/nav-link-previews/projects.png'
+    thumbnail: ''
   },
   {
     title: 'Contact',
     href: '/#contact',
-    thumbnail: '/assets/nav-link-previews/contact.png'
+    thumbnail: ''
   }
 ];
 

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React from "react";
 import ReactFlow, { Background, Controls, MiniMap, Node, Edge } from "reactflow";
 import "reactflow/dist/style.css";
 
@@ -18,8 +18,30 @@ const nodeStyle = {
 };
 
 // Define the architectures for your AI projects
-const architectures: Record<string, { nodes: Node[]; edges: Edge[] }> = {
+const architectures: Record<string, { label: string; nodes: Node[]; edges: Edge[] }> = {
+  "agentnine": {
+    label: "Next.js + Supabase",
+    nodes: [
+      { id: "1", data: { label: "Upstream Repo" }, position: { x: 250, y: 0 }, style: nodeStyle },
+      { id: "2", data: { label: "Listing Intake" }, position: { x: 250, y: 80 }, style: nodeStyle },
+      { id: "3", data: { label: "5-Point Verification" }, position: { x: 250, y: 160 }, style: { ...nodeStyle, background: "#0d1117", borderColor: "#ED462D" } },
+      { id: "4", data: { label: "Setup + Access Notes" }, position: { x: 80, y: 240 }, style: nodeStyle },
+      { id: "5", data: { label: "Supabase Postgres" }, position: { x: 420, y: 240 }, style: { ...nodeStyle, background: "#0d1117" } },
+      { id: "6", data: { label: "Search + Filters" }, position: { x: 250, y: 320 }, style: nodeStyle },
+      { id: "7", data: { label: "Browse / Compare" }, position: { x: 250, y: 400 }, style: { ...nodeStyle, background: "#0d1117", borderColor: "#3FCF8E" } },
+    ],
+    edges: [
+      { id: "e1-2", source: "1", target: "2", animated: true, style: { stroke: "#ED462D" } },
+      { id: "e2-3", source: "2", target: "3", animated: true, style: { stroke: "#ED462D" } },
+      { id: "e3-4", source: "3", target: "4", animated: true, style: { stroke: "#58a6ff" } },
+      { id: "e3-5", source: "3", target: "5", animated: true, style: { stroke: "#58a6ff" } },
+      { id: "e4-6", source: "4", target: "6", animated: true, style: { stroke: "#58a6ff" } },
+      { id: "e5-6", source: "5", target: "6", animated: true, style: { stroke: "#58a6ff" } },
+      { id: "e6-7", source: "6", target: "7", animated: true, style: { stroke: "#22c55e" } },
+    ],
+  },
   "lumanguide": {
+    label: "LangGraph",
     nodes: [
       { id: "1", data: { label: "User Query" }, position: { x: 250, y: 0 }, style: nodeStyle },
       { id: "2", data: { label: "Guardrail (Security)" }, position: { x: 250, y: 80 }, style: nodeStyle },
@@ -40,6 +62,7 @@ const architectures: Record<string, { nodes: Node[]; edges: Edge[] }> = {
     ],
   },
   "omnicrew-ai": {
+    label: "CrewAI",
     nodes: [
       { id: "1", data: { label: "User Request" }, position: { x: 250, y: 0 }, style: nodeStyle },
       { id: "2", data: { label: "Researcher Agent" }, position: { x: 250, y: 80 }, style: nodeStyle },
@@ -66,7 +89,7 @@ export default function ProjectArchitecture({ projectId }: { projectId: string }
 
   return (
     <div className="mt-8 border-t border-border pt-6">
-      <h3 className="text-xl font-bold mb-4 text-foreground">Architecture Flow ({projectId === "lumanguide" ? "LangGraph" : "CrewAI"})</h3>
+      <h3 className="text-xl font-bold mb-4 text-foreground">Architecture Flow ({data.label})</h3>
       <div style={{ height: 400, width: "100%", background: "#0d1117", borderRadius: "8px", border: "1px solid #30363d" }} className="overflow-hidden">
         <ReactFlow
           nodes={data.nodes}
@@ -86,7 +109,7 @@ export default function ProjectArchitecture({ projectId }: { projectId: string }
           />
         </ReactFlow>
       </div>
-      <p className="text-xs text-muted-foreground mt-2 text-center">Drag the nodes to explore the agentic pipeline.</p>
+      <p className="text-xs text-muted-foreground mt-2 text-center">Drag the nodes to explore the pipeline.</p>
     </div>
   );
 }

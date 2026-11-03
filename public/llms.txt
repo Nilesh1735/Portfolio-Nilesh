@@ -1,28 +1,42 @@
-# Nilesh Raj - AI/ML Engineer & Forward Deployed Engineer
+# Nilesh Raj - Founder & AI Engineer @AgentNine
 
 ## Profile
-Nilesh Raj is an AI/ML Engineer and Forward Deployed Engineer specializing in NLP,
-fine-tuning transformer models, Retrieval-Augmented Generation (RAG) pipelines, and
-agentic AI systems. He builds and deploys production-ready AI applications with large
-language models. NVIDIA-certified in LLM application development.
+Nilesh Raj is the Founder & AI Engineer at AgentNine, based in Varanasi, Uttar Pradesh,
+India. He builds and ships AI systems end to end, from architecture to live deployment:
+agentic AI, Retrieval-Augmented Generation (RAG) pipelines, NLP, and fine-tuned
+transformer models. NVIDIA-certified in LLM application development. Open to AI Engineer
+and Applied AI roles, remote or hybrid.
 
 ## Education
-BCA with IBM Specialization (AI & Data Science), United University Prayagraj (2022-2025).
+BCA, Artificial Intelligence (IBM Specialization), United University, Prayagraj
+(Aug 2022 - May 2025).
 
 ## Core Projects
-1. OmniCrew AI: An autonomous multi-agent B2B lead-generation platform built with CrewAI,
+1. AgentNine: An independent, community-led directory of open-source AI agents. Each
+   listing links to its upstream repository and sets out install steps for Windows, macOS
+   and Linux, the access the agent requests, the version reviewed, and what is still
+   undocumented. Every listing passes a 5-point verification checklist before publication.
+   Built with Next.js App Router, React 19, TypeScript, Tailwind CSS 4, Supabase Postgres,
+   Fuse.js search and Vitest; deployed on Vercel.
+   Live: https://agentnine.pro | Code: https://github.com/Nilesh1735/AgentNine
+2. OmniCrew AI: An autonomous multi-agent B2B lead-generation platform built with CrewAI,
    featuring a 3-tier LLM fallback router (DeepSeek -> Mistral -> Gemini) for 99.9% task
-   completion, Redis-backed MD5 caching, and JWT multi-tenant data isolation.
+   completion, Redis-backed MD5 caching, SSRF protection, and JWT multi-tenant isolation.
    Live: https://omnicrew-ai.vercel.app/ | Code: https://github.com/Nilesh1735/OMNICREW-AI
-2. LumanGuide: An enterprise Agentic RAG system on a LangGraph state machine with dynamic
-   document grading, query routing, FAISS vector search, prompt-injection guardrails, JWT
-   RBAC, and LangSmith LLMOps observability.
+3. LumanGuide: An enterprise Agentic RAG system on a LangGraph state machine with dynamic
+   document grading, a grade-and-rewrite retrieval cycle, FAISS vector search,
+   prompt-injection guardrails, JWT RBAC, and LangSmith LLMOps observability.
    Live: https://lumanguide-app.streamlit.app/ | Code: https://github.com/Nilesh1735/LumanGuide-Onboarding-Illuminated
 
 ## Experience
-AI/ML Trainee at Technosavvys Education Technology (Remote, Feb-May 2026): Fine-tuned a
-BERT text classifier on 500+ reviews (88% accuracy, +15% over baseline) with Hugging Face,
-and deployed a real-time Streamlit sentiment dashboard for 10+ mentors.
+Founder & AI Engineer at AgentNine (Varanasi, Jun 2026 - Present): founded and shipped
+agentnine.pro; leads product direction and technical decisions with a small team across
+product, engineering and launch.
+
+AI/ML Trainee at Technosavvys Education Technology (Remote, Feb-May 2026): engineered a
+BERT text classifier on 500+ student reviews per batch with Hugging Face (88% accuracy,
++15% over a TF-IDF baseline) and deployed a real-time Streamlit sentiment dashboard backed
+by SQLite for mentors across multiple active courses.
 
 ## Skills
 AI & GenAI: LangGraph, CrewAI, LangChain (LCEL), Agentic AI, RAG Pipelines, LLMs, Prompt
@@ -30,14 +44,19 @@ Engineering, NLP, BERT, Transformers, Semantic Chunking, Embedding Models, Vecto
 (FAISS), OpenAI API, Mistral AI, DeepSeek, Gemini API, Tavily, NVIDIA NIM, LangSmith.
 ML Engineering: PyTorch, Scikit-learn, Hugging Face, Pandas, NumPy, Fine-tuning, Transfer
 Learning, Hyperparameter Tuning, Sentiment Analysis.
+Product & Web: Next.js (App Router), React 19, TypeScript, Tailwind CSS, Supabase, Vitest,
+Vercel.
 Deployment & Infra: Python, FastAPI, Docker, Streamlit, REST APIs, Redis, AWS (S3, EC2,
 Lambda), Git, CI/CD, Pydantic.
 Data & Storage: SQL, MongoDB Atlas, MySQL, PostgreSQL, SQLite, Vector Databases.
 
 ## Certifications
-Building LLM Applications with Prompt Engineering - NVIDIA Deep Learning Institute (2025).
+Introduction to Generative AI - Art of the Possible, Amazon Web Services (May 2026).
+Building LLM Applications with Prompt Engineering, NVIDIA Deep Learning Institute (2025).
+Introduction to Python, IBM (Apr 2023).
 
 ## Contact
 Email: nileshraj1735@gmail.com
 GitHub: https://github.com/Nilesh1735
-LinkedIn: https://www.linkedin.com/in/nilesh-raj-nr1735
+LinkedIn: https://www.linkedin.com/in/nilesh-raj-ai
+Portfolio: https://nileshraj-portfolio.vercel.app

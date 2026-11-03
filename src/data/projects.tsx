@@ -6,8 +6,29 @@ import Link from "next/link";
 import { ReactNode } from "react";
 import ProjectArchitecture from "@/components/project-architecture"; // ADDED IMPORT
 
-const BASE_PATH = "/assets/projects-screenshots";
-const PLACEHOLDER_IMG = "/assets/logo-dark.svg";
+
+// Real captures that ship in /public — previously unused while the cards
+// rendered the dark logo as a stand-in.
+const SHOTS = {
+  omnicrew: [
+    "/images/omnicrew1.png",
+    "/images/omnicrew2.png",
+    "/images/omnicrew5.png",
+    "/images/omnicrew4.png",
+  ],
+  lumanguide: [
+    "/images/Luman1.png",
+    "/images/Luman2.png",
+    "/images/Luman3.png",
+    "/images/Luman4.png",
+  ],
+  agentnine: [
+    "/images/agentnine/agents.png",
+    "/images/agentnine/categories.png",
+    "/images/agentnine/search.png",
+    "/images/agentnine/methodology.png",
+  ],
+};
 
 const MaskIcon = ({ src, title }: { src: string; title?: string }) => (
   <span
@@ -84,11 +105,13 @@ const PROJECT_SKILLS = {
   faiss: brand("FAISS", "faiss-mono.svg"),
   streamlit: brand("Streamlit", "streamlit-mono.svg"),
   docker: brand("Docker", "docker-mono.svg"),
-  aws: brand("AWS", "cloudflare-mono.svg"),
-  // Added mappings to prevent UI from breaking while keeping correct text labels
-  crewai: brand("CrewAI", "langchain-mono.svg"),
-  langgraph: brand("LangGraph", "langchain-mono.svg"),
-  redis: brand("Redis", "nodedotjs-mono.svg"),
+  aws: brand("AWS", "aws-mono.svg"),
+  crewai: brand("CrewAI", "crewai-mono.svg"),
+  langgraph: brand("LangGraph", "langgraph-mono.svg"),
+  redis: brand("Redis", "redis-mono.svg"),
+  mistral: brand("Mistral AI", "mistral-ai-mono.svg"),
+  supabase: brand("Supabase", "supabase-mono.svg"),
+  vercel: brand("Vercel", "vercel-mono.svg"),
 };
 
 export type Project = {
@@ -105,11 +128,58 @@ export type Project = {
 
 const projects: Project[] = [
   {
+    id: "agentnine",
+    category: "Product / Open-Source Directory",
+    title: "AgentNine",
+    src: SHOTS.agentnine[0],
+    screenshots: SHOTS.agentnine,
+    github: "https://github.com/Nilesh1735/AgentNine",
+    live: "https://agentnine.pro",
+    skills: {
+      frontend: [
+        PROJECT_SKILLS.next,
+        PROJECT_SKILLS.react,
+        PROJECT_SKILLS.ts,
+        PROJECT_SKILLS.tailwind,
+      ],
+      backend: [
+        PROJECT_SKILLS.supabase,
+        PROJECT_SKILLS.postgres,
+        PROJECT_SKILLS.vercel,
+      ],
+    },
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono">
+            An independent, community-led directory for discovering open-source AI agents.
+            Finding an agent is easy; finding out how to set it up and what it needs is not.
+            Every AgentNine listing links back to its upstream repository and sets out the
+            install steps for Windows, macOS and Linux, the access the agent requests
+            (network, files, ports, environment variables), the version that was reviewed
+            and when — and states plainly what is still undocumented.
+          </TypographyP>
+          <TypographyP className="font-mono mt-4">
+            <strong>Key Features:</strong> browse by category with operating-system and
+            API-key filters, Fuse.js full-text search, side-by-side comparison of up to
+            three agents with no account required, and saved agents via Google or email
+            sign-in. Each listing passes a 5-point verification checklist before publication.
+            Built on Next.js App Router, React 19 and Tailwind CSS 4, with Supabase Postgres
+            for auth and data, a Vitest suite, and deployment on Vercel.
+          </TypographyP>
+          <ProjectsLinks live={this.live} github={this.github} />
+          <ProjectArchitecture projectId={this.id} />
+          <SlideShow images={SHOTS.agentnine} />
+        </div>
+      );
+    },
+  },
+  {
     id: "omnicrew-ai",
     category: "Agentic AI / Full Stack",
     title: "OmniCrew AI",
-    src: PLACEHOLDER_IMG,
-    screenshots: [],
+    src: SHOTS.omnicrew[0],
+    screenshots: SHOTS.omnicrew,
     github: "https://github.com/Nilesh1735/OMNICREW-AI",
     live: "https://omnicrew-ai.vercel.app/",
     skills: {
@@ -128,7 +198,7 @@ const projects: Project[] = [
           <ProjectsLinks live={this.live} github={this.github} />
           {/* ADDED: Interactive Architecture Diagram */}
           <ProjectArchitecture projectId={this.id} />
-          <SlideShow images={[PLACEHOLDER_IMG]} />
+          <SlideShow images={SHOTS.omnicrew} />
         </div>
       );
     },
@@ -137,8 +207,8 @@ const projects: Project[] = [
     id: "lumanguide",
     category: "AI / RAG System",
     title: "LumanGuide",
-    src: PLACEHOLDER_IMG,
-    screenshots: [],
+    src: SHOTS.lumanguide[0],
+    screenshots: SHOTS.lumanguide,
     github: "https://github.com/Nilesh1735/LumanGuide-Onboarding-Illuminated",
     live: "https://lumanguide-app.streamlit.app/",
     skills: {
@@ -157,7 +227,7 @@ const projects: Project[] = [
           <ProjectsLinks live={this.live} github={this.github} />
           {/* ADDED: Interactive Architecture Diagram */}
           <ProjectArchitecture projectId={this.id} />
-          <SlideShow images={[PLACEHOLDER_IMG]} />
+          <SlideShow images={SHOTS.lumanguide} />
         </div>
       );
     },
