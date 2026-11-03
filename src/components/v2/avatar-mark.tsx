@@ -12,7 +12,7 @@ import Image from "next/image";
  * hero show identical artwork.
  */
 export default function AvatarMark({
-  src = "/images/avatar.png",
+  src = "/images/avatar.webp",
   alt,
   size = 168,
 }: {
