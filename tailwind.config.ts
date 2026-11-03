@@ -25,8 +25,7 @@ const config = {
       fontFamily: {
         sans: ["var(--font-sans)", "sans-serif"],
         display: ["var(--font-display)", "sans-serif"],
-        // `font-mono` renders Space Grotesk (same as body) — Space Mono dropped.
-        mono: ["var(--font-sans)", "sans-serif"],
+        mono: ["ui-monospace", "SFMono-Regular", "SF Mono", "Menlo", "monospace"],
       },
       colors: {
         border: "hsl(var(--border))",

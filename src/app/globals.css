@@ -8,66 +8,60 @@ body {
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Light theme: an inversion of the dark palette, same accent. */
+    --background: 0 0% 98%;
+    --foreground: 0 0% 7%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 7%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    /* space accent — monochrome ink (theme-aware) */
-    --primary: 222 47% 11%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222 84% 5%;
-    --radius: 0.5rem;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    /* accent helpers — monochrome ink */
-    --brand: #171717;
-    --accent-solid: #171717;
+    --popover-foreground: 0 0% 7%;
+    --primary: 0.5 100% 43.3%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 94%;
+    --secondary-foreground: 0 0% 7%;
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 38%;
+    --accent: 0 0% 94%;
+    --accent-foreground: 0 0% 7%;
+    --destructive: 0.5 100% 43.3%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 0.5 100% 43.3%;
+    --radius: 1.25rem;
+
+    /* Brand. --brand is AgentNine's mark; --brand-text is lifted so small
+       accent text still clears 4.5:1 against the near-black background. */
+    --brand: #dd0200;
+    --brand-text: #c40200;
+    --accent-solid: #dd0200;
     --accent-glow: transparent;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222 47% 11%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212 27% 84%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    /* accent helpers — monochrome ink */
-    --brand: #f5f5f5;
-    --accent-solid: #f5f5f5;
+    --background: 0 0% 4.7%;
+    --foreground: 0 0% 96.1%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 96.1%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 96.1%;
+    --primary: 0.5 100% 43.3%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 96.1%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 54.1%;
+    --accent: 0 0% 12%;
+    --accent-foreground: 0 0% 96.1%;
+    --destructive: 3.5 100% 59.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
+    --ring: 3.5 100% 59.2%;
+
+    --brand: #dd0200;
+    --brand-text: #ff3b2f;
+    --accent-solid: #dd0200;
     --accent-glow: transparent;
   }
 }
@@ -88,17 +82,9 @@ body {
     @apply bg-background text-foreground;
   }
 
-  /* Headings use the display font (--font-display, Unbounded). Body and
-     everything else inherits Space Grotesk via `font-sans` on <html>. Elements
-     can still opt in explicitly with the `font-display` Tailwind class. */
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-display), sans-serif;
-  }
+  /* Headings inherit Inter. Instrument Serif is opted into explicitly
+     with the `font-display` class — it appears on the hero arc and the
+     two page titles, nowhere else. */
 }
 
 /* canvas-confetti injects a canvas with inline z-index */

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Unbounded } from "next/font/google";
+import { Inter, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { config } from "@/data/config";
 
@@ -8,19 +8,20 @@ import SiteFrame from "@/components/site-frame";
 import { Providers } from "@/components/providers";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
-// Import the new UI overlays
-import ScrollProgress from "@/components/ui/scroll-progress";
-import ScrollSpotlight from "@/components/scroll-spotlight";
-
-const spaceGroteskSans = Space_Grotesk({
+// Inter carries the whole interface at 400/500 — the design uses no bold.
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
+  weight: ["400", "500"],
   display: "swap",
 });
 
-const unbounded = Unbounded({
+// Instrument Serif appears once, on the curved name in the hero.
+const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
   variable: "--font-display",
+  weight: "400",
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -56,8 +57,8 @@ export default function RootLayout({
     <html
       lang="en"
       className={[
-        spaceGroteskSans.variable,
-        unbounded.variable,
+        inter.variable,
+        instrumentSerif.variable,
         "font-sans",
       ].join(" ")}
       suppressHydrationWarning
@@ -74,8 +75,6 @@ export default function RootLayout({
       </head>
       <body>
         {/* Global UI Overlays */}
-        <ScrollProgress />
-        <ScrollSpotlight />
 
         <Providers>
           <SiteFrame>{children}</SiteFrame>
