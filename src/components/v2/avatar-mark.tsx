@@ -3,16 +3,15 @@ import Image from "next/image";
 /**
  * The portrait mark in the hero.
  *
- * The brand circle is part of the artwork itself (red ring, white disc,
- * two-tone portrait), so this renders the image alone — no coloured
- * background behind it, which would show as a second ring at the edges.
+ * An illustration drawn as SVG, not derived from a photo — the two photo
+ * treatments tried before could not produce drawn linework. The brand
+ * circle is part of the artwork, so nothing is painted behind it.
  *
- * The art is thresholded once at 1024px and every size, including the
- * favicons, is a downscale of that same master, so the tab icon and the
- * hero show identical artwork.
+ * Vector, so it stays crisp at any size and costs ~2.5KB. The favicons are
+ * rasterised from this same file, so the tab icon and the hero match.
  */
 export default function AvatarMark({
-  src = "/images/avatar.webp",
+  src = "/images/avatar.svg",
   alt,
   size = 168,
 }: {
