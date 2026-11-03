@@ -1,115 +1,148 @@
-"use client";
-
 import React from "react";
-import ReactFlow, { Background, Controls, MiniMap, Node, Edge } from "reactflow";
-import "reactflow/dist/style.css";
 
-// Styling for the dark mode nodes
-const nodeStyle = {
-  background: "#161b22",
-  color: "#f0f6fc",
-  border: "1px solid #30363d",
-  borderRadius: "8px",
-  padding: "10px 15px",
-  fontSize: "12px",
-  fontFamily: "monospace",
-  width: 150,
-  textAlign: "center" as const,
-};
+/**
+ * Static architecture diagrams, hand-rendered as inline SVG.
+ *
+ * These replaced a full ReactFlow graph runtime that was pulled in to draw
+ * three fixed, non-interactive flows — the library was by far the most
+ * expensive thing on the projects section for no behaviour the diagrams use.
+ */
 
-// Define the architectures for your AI projects
-const architectures: Record<string, { label: string; nodes: Node[]; edges: Edge[] }> = {
-  "agentnine": {
+type Step = { label: string; accent?: "start" | "end" };
+type Flow = { label: string; lanes: Step[][] };
+
+const FLOWS: Record<string, Flow> = {
+  agentnine: {
     label: "Next.js + Supabase",
-    nodes: [
-      { id: "1", data: { label: "Upstream Repo" }, position: { x: 250, y: 0 }, style: nodeStyle },
-      { id: "2", data: { label: "Listing Intake" }, position: { x: 250, y: 80 }, style: nodeStyle },
-      { id: "3", data: { label: "5-Point Verification" }, position: { x: 250, y: 160 }, style: { ...nodeStyle, background: "#0d1117", borderColor: "#ED462D" } },
-      { id: "4", data: { label: "Setup + Access Notes" }, position: { x: 80, y: 240 }, style: nodeStyle },
-      { id: "5", data: { label: "Supabase Postgres" }, position: { x: 420, y: 240 }, style: { ...nodeStyle, background: "#0d1117" } },
-      { id: "6", data: { label: "Search + Filters" }, position: { x: 250, y: 320 }, style: nodeStyle },
-      { id: "7", data: { label: "Browse / Compare" }, position: { x: 250, y: 400 }, style: { ...nodeStyle, background: "#0d1117", borderColor: "#3FCF8E" } },
-    ],
-    edges: [
-      { id: "e1-2", source: "1", target: "2", animated: true, style: { stroke: "#ED462D" } },
-      { id: "e2-3", source: "2", target: "3", animated: true, style: { stroke: "#ED462D" } },
-      { id: "e3-4", source: "3", target: "4", animated: true, style: { stroke: "#58a6ff" } },
-      { id: "e3-5", source: "3", target: "5", animated: true, style: { stroke: "#58a6ff" } },
-      { id: "e4-6", source: "4", target: "6", animated: true, style: { stroke: "#58a6ff" } },
-      { id: "e5-6", source: "5", target: "6", animated: true, style: { stroke: "#58a6ff" } },
-      { id: "e6-7", source: "6", target: "7", animated: true, style: { stroke: "#22c55e" } },
-    ],
-  },
-  "lumanguide": {
-    label: "LangGraph",
-    nodes: [
-      { id: "1", data: { label: "User Query" }, position: { x: 250, y: 0 }, style: nodeStyle },
-      { id: "2", data: { label: "Guardrail (Security)" }, position: { x: 250, y: 80 }, style: nodeStyle },
-      { id: "3", data: { label: "Evaluate Intent" }, position: { x: 250, y: 160 }, style: nodeStyle },
-      { id: "4", data: { label: "Retriever / Web Search" }, position: { x: 100, y: 240 }, style: nodeStyle },
-      { id: "5", data: { label: "Team Navigator" }, position: { x: 400, y: 240 }, style: nodeStyle },
-      { id: "6", data: { label: "Grade Relevance" }, position: { x: 250, y: 320 }, style: nodeStyle },
-      { id: "7", data: { label: "Generate Response" }, position: { x: 250, y: 400 }, style: { ...nodeStyle, background: "#0d1117", borderColor: "#ED462D" } },
-    ],
-    edges: [
-      { id: "e1-2", source: "1", target: "2", animated: true, style: { stroke: "#ED462D" } },
-      { id: "e2-3", source: "2", target: "3", animated: true, style: { stroke: "#ED462D" } },
-      { id: "e3-4", source: "3", target: "4", animated: true, style: { stroke: "#58a6ff" } },
-      { id: "e3-5", source: "3", target: "5", animated: true, style: { stroke: "#58a6ff" } },
-      { id: "e4-6", source: "4", target: "6", animated: true, style: { stroke: "#58a6ff" } },
-      { id: "e5-6", source: "5", target: "6", animated: true, style: { stroke: "#58a6ff" } },
-      { id: "e6-7", source: "6", target: "7", animated: true, style: { stroke: "#22c55e" } },
+    lanes: [
+      [{ label: "Upstream Repo", accent: "start" }],
+      [{ label: "Listing Intake" }],
+      [{ label: "5-Point Verification" }],
+      [{ label: "Setup + Access Notes" }, { label: "Supabase Postgres" }],
+      [{ label: "Search + Filters" }],
+      [{ label: "Browse / Compare", accent: "end" }],
     ],
   },
   "omnicrew-ai": {
     label: "CrewAI",
-    nodes: [
-      { id: "1", data: { label: "User Request" }, position: { x: 250, y: 0 }, style: nodeStyle },
-      { id: "2", data: { label: "Researcher Agent" }, position: { x: 250, y: 80 }, style: nodeStyle },
-      { id: "3", data: { label: "Web Scraper (Tool)" }, position: { x: 100, y: 160 }, style: { ...nodeStyle, background: "#0d1117" } },
-      { id: "4", data: { label: "Extraction Analyst" }, position: { x: 250, y: 240 }, style: nodeStyle },
-      { id: "5", data: { label: "Validation Manager" }, position: { x: 250, y: 320 }, style: nodeStyle },
-      { id: "6", data: { label: "MySQL Database" }, position: { x: 250, y: 400 }, style: { ...nodeStyle, background: "#0d1117" } },
+    lanes: [
+      [{ label: "User Request", accent: "start" }],
+      [{ label: "Researcher Agent" }],
+      [{ label: "Web Scraper" }, { label: "Snov.io Enrichment" }],
+      [{ label: "Extraction Analyst" }],
+      [{ label: "Validation Manager" }],
+      [{ label: "Database", accent: "end" }],
     ],
-    edges: [
-      { id: "e1-2", source: "1", target: "2", animated: true, style: { stroke: "#ED462D" } },
-      { id: "e2-3", source: "2", target: "3", animated: true, style: { stroke: "#58a6ff" } },
-      { id: "e2-4", source: "2", target: "4", animated: true, style: { stroke: "#ED462D" } },
-      { id: "e4-5", source: "4", target: "5", animated: true, style: { stroke: "#ED462D" } },
-      { id: "e5-6", source: "5", target: "6", animated: true, style: { stroke: "#22c55e" } },
+  },
+  lumanguide: {
+    label: "LangGraph",
+    lanes: [
+      [{ label: "User Query", accent: "start" }],
+      [{ label: "Guardrail (Security)" }],
+      [{ label: "Evaluate Intent" }],
+      [{ label: "Retriever / FAISS" }, { label: "Team Navigator" }],
+      [{ label: "Grade Relevance" }],
+      [{ label: "Generate Response", accent: "end" }],
     ],
   },
 };
 
-export default function ProjectArchitecture({ projectId }: { projectId: string }) {
-  const data = architectures[projectId];
+const BOX_W = 190;
+const BOX_H = 44;
+const GAP_X = 28;
+const GAP_Y = 30;
+const PAD = 16;
 
-  // If the project doesn't have a defined architecture, don't render anything
-  if (!data) return null;
+export default function ProjectArchitecture({ projectId }: { projectId: string }) {
+  const flow = FLOWS[projectId];
+  if (!flow) return null;
+
+  const maxPerLane = Math.max(...flow.lanes.map((l) => l.length));
+  const width = maxPerLane * BOX_W + (maxPerLane - 1) * GAP_X + PAD * 2;
+  const height = flow.lanes.length * BOX_H + (flow.lanes.length - 1) * GAP_Y + PAD * 2;
+
+  // Pre-compute each node's centre so edges can be drawn between lanes.
+  const placed = flow.lanes.map((lane, row) => {
+    const rowW = lane.length * BOX_W + (lane.length - 1) * GAP_X;
+    const startX = (width - rowW) / 2;
+    return lane.map((step, i) => ({
+      ...step,
+      x: startX + i * (BOX_W + GAP_X),
+      y: PAD + row * (BOX_H + GAP_Y),
+    }));
+  });
 
   return (
-    <div className="mt-8 border-t border-border pt-6">
-      <h3 className="text-xl font-bold mb-4 text-foreground">Architecture Flow ({data.label})</h3>
-      <div style={{ height: 400, width: "100%", background: "#0d1117", borderRadius: "8px", border: "1px solid #30363d" }} className="overflow-hidden">
-        <ReactFlow
-          nodes={data.nodes}
-          edges={data.edges}
-          fitView
-          nodesDraggable={true}
-          nodesConnectable={false}
-          zoomOnScroll={false}
-          panOnDrag={true}
+    <figure className="mt-8 border-t border-border pt-6">
+      <figcaption className="text-xl font-bold mb-4 text-foreground">
+        Architecture Flow ({flow.label})
+      </figcaption>
+      <div className="overflow-x-auto rounded-lg border border-border bg-[#0d1117] p-4">
+        <svg
+          viewBox={`0 0 ${width} ${height}`}
+          width="100%"
+          style={{ maxWidth: width, margin: "0 auto", display: "block" }}
+          role="img"
+          aria-label={`${flow.label} architecture: ${flow.lanes
+            .map((l) => l.map((s) => s.label).join(" and "))
+            .join(", then ")}.`}
         >
-          <Background color="#30363d" gap={16} />
-          <Controls showInteractive={false} style={{ background: "#161b22", borderColor: "#30363d" }} />
-          <MiniMap 
-            nodeColor={(n) => n.style?.background === "#0d1117" ? "#0d1117" : "#161b22"} 
-            maskColor="rgba(13, 17, 23, 0.8)"
-            style={{ background: "#161b22" }}
-          />
-        </ReactFlow>
+          {/* Edges first so boxes paint over the line ends. */}
+          <g stroke="#30363d" strokeWidth="1.5" fill="none">
+            {placed.slice(0, -1).map((lane, row) =>
+              lane.flatMap((from) =>
+                placed[row + 1].map((to) => {
+                  const x1 = from.x + BOX_W / 2;
+                  const y1 = from.y + BOX_H;
+                  const x2 = to.x + BOX_W / 2;
+                  const y2 = to.y;
+                  const mid = y1 + GAP_Y / 2;
+                  return (
+                    <path
+                      key={`${row}-${from.label}-${to.label}`}
+                      d={`M${x1} ${y1} V${mid} H${x2} V${y2}`}
+                    />
+                  );
+                }),
+              ),
+            )}
+          </g>
+
+          {placed.flat().map((node) => {
+            const stroke =
+              node.accent === "end"
+                ? "#22c55e"
+                : node.accent === "start"
+                  ? "#ED462D"
+                  : "#30363d";
+            return (
+              <g key={node.label}>
+                <rect
+                  x={node.x}
+                  y={node.y}
+                  width={BOX_W}
+                  height={BOX_H}
+                  rx="8"
+                  fill="#161b22"
+                  stroke={stroke}
+                  strokeWidth="1"
+                />
+                <text
+                  x={node.x + BOX_W / 2}
+                  y={node.y + BOX_H / 2}
+                  textAnchor="middle"
+                  dominantBaseline="central"
+                  fill="#f0f6fc"
+                  fontSize="12"
+                  fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace"
+                >
+                  {node.label}
+                </text>
+              </g>
+            );
+          })}
+        </svg>
       </div>
-      <p className="text-xs text-muted-foreground mt-2 text-center">Drag the nodes to explore the pipeline.</p>
-    </div>
+    </figure>
   );
 }

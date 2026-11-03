@@ -2,7 +2,6 @@
 
 import { usePathname } from "next/navigation";
 import Particles from "@/components/Particles";
-import RemoteCursors from "@/components/realtime/remote-cursors";
 import ElasticCursor from "@/components/ui/ElasticCursor";
 import RadialMenu from "@/components/radial-menu/index";
 import MotionNudge from "@/components/motion-nudge";
@@ -26,7 +25,6 @@ export default function AppOverlays() {
           maxDpr={maxDpr}
         />
       )}
-      {isHome && <RemoteCursors />}
       
       {!isResume && !disableDecorative && <ElasticCursor />}
       {isHome && <RadialMenu />}
