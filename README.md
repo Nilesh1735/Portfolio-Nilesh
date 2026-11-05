@@ -1,176 +1,122 @@
 # Nilesh Raj — Portfolio
 
-Interactive 3D developer portfolio with a keyboard where every keycap is a skill. Built with Next.js, React, TypeScript, GSAP, and Motion. Customized for [Nilesh Raj](https://github.com/Nilesh1735) — AI/ML Engineer | Forward Deployed Engineer.
+A fast, quiet, dark portfolio for [Nilesh Raj](https://github.com/Nilesh1735), Founder and AI Engineer at [AgentNine](https://agentnine.pro).
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nilesh1735/Portfolio-Nilesh)
+Built with Next.js 16, React 19 and TypeScript. The motion is plain CSS, there is no animation library, and nothing on the page uses `backdrop-filter`. That is deliberate, and the reason it holds 60fps while scrolling.
+
+**Live:** https://nileshraj-portfolio.vercel.app
+
+## Performance
+
+Measured in a headless Chromium throttled to 4x slower CPU, which approximates a mid-range laptop:
+
+| Metric | Value |
+|---|---|
+| Scroll | 61fps, 17ms worst frame |
+| Long tasks | 0 |
+| Transferred | 116KB |
+| DOM nodes | 330 |
+| First Contentful Paint | 330-830ms across runs |
+
+Scroll, long tasks, transfer size and node count are stable run to run.
+First paint is not: it swings with server cold-start and with whatever
+else the machine is doing, so it is quoted as a range rather than a
+flattering single number.
+
+How it stays there, in rough order of how much each mattered:
+
+- **No blur.** `backdrop-filter` and large `blur()` radii are the most expensive things you can put on a page that moves. An earlier revision of this site ran at 24fps; removing blur, box shadows and a particle canvas accounted for most of the gap.
+- **No animation library and no scroll-driven animation.** Entrance motion is CSS keyframes fired once on load with staggered delays. Nothing recalculates on scroll.
+- **Only `transform` and `opacity` animate**, so every transition runs on the compositor rather than triggering layout or paint.
+- **No icon CDN.** The skill list is text, not 23 SVGs fetched from a third party on every page load.
+- **Images are WebP**, sized close to their display size, and letterboxed to the card aspect so the browser never scales or crops at runtime.
 
 ## Features
 
-- **Interactive 3D Keyboard** — Custom Spline keyboard where each keycap represents a skill, revealing titles and descriptions on hover/press
-- **"Ask My Portfolio" AI Chat** — A streamed chatbot (DeepSeek, via the OpenAI-compatible Vercel AI SDK) grounded in the résumé and projects, so recruiters can ask questions like _"What's his RAG experience?"_
-- **GitHub Activity** — Live profile stats, contribution graph, and top repositories pulled from the GitHub API
-- **Buttery Animations** — GSAP + Motion powered scroll, hover, and reveal animations
-- **Lenis Smooth Scrolling** — Integrated Lenis for interpolated scrolling, perfectly synced with GSAP ScrollTrigger for a premium, gliding feel
-- **3D Parallax Mockups** — Interactive project displays that cycle through live screenshots with 3D tilt effects
-- **Space Theme** — Floating particles on a dark canvas for a cosmic vibe
-- **Light & Dark Mode** — Full theme support with cheeky disclaimer toasts
-- **Responsive** — Works across all screen sizes
-- **Secure Contact Form** — Email delivery via Resend with frontend validation
-- **Authentication UI** — Custom password visibility toggle and secure routing
-- **Analytics** _(optional)_ — Umami analytics integration
+- **Hero** with the name set on an SVG arc and a portrait that swaps to a blushing variant on hover, cross-faded on opacity alone.
+- **Highlights** with a pill filter across `agentic ai`, `rag`, `ml`, `web` and `books`. Nothing selected shows every project; `books` swaps the panel for the reading list.
+- **Experience** with per-role disclosures that animate their height via `grid-template-rows: 0fr -> 1fr`, the only way to transition to an unknown height without measuring it in JavaScript. Collapsed panels are `inert`, so their contents stay out of the tab order and the accessibility tree.
+- **GitHub activity** pulled live from the GitHub API: stars, repository count, followers, contribution graph and top repositories. The section hides itself entirely if the API is unreachable or rate-limited.
+- **"Ask my portfolio" assistant**, a streamed chatbot (DeepSeek through the OpenAI-compatible Vercel AI SDK) grounded only in `src/data/knowledge.ts`.
+- **Accessibility:** one `<h1>` per route, alt text on every image, visible focus rings on every interactive element, and all motion disabled under `prefers-reduced-motion` without leaving any content hidden.
 
-## Tech Stack
+## Tech stack
 
-| Layer | Technologies |
+| Layer | What |
 |---|---|
-| **Framework** | Next.js 16, React 19, TypeScript |
-| **Styling** | Tailwind CSS, Shadcn UI |
-| **Animation** | GSAP, Motion, Lenis |
-| **3D** | Spline Runtime |
-| **Email** | Resend |
-| **Misc** | Zod, lucide-react, @teispace/next-themes |
+| Framework | Next.js 16 (App Router, Turbopack), React 19, TypeScript |
+| Styling | Tailwind CSS, a few Radix primitives |
+| Type | Inter (400/500 only, no bold) and Instrument Serif |
+| Motion | CSS keyframes and transitions. No GSAP, no Lenis, no Framer Motion |
+| AI chat | Vercel AI SDK with DeepSeek |
+| Email | Resend (see the note under Environment) |
+| Hosting | Vercel |
 
----
+## Getting started
 
-## Getting Started
-
-### Prerequisites
-
-- Node.js (v18+)
-- npm, pnpm, or yarn
-
-### Installation
-
-1. **Clone the repository:**
-
-    ```bash
-    git clone https://github.com/Nilesh1735/Portfolio-Nilesh.git
-    cd Portfolio-Nilesh
-    ```
-
-2. **Install dependencies:**
-
-    ```bash
-    npm install
-    ```
-
-3. **Set up environment variables:**
-
-    Copy `.env.example` to `.env.local` and fill in the values:
-
-    ```bash
-    cp .env.example .env.local
-    ```
-
-    | Variable | Required | Description |
-    |---|---|---|
-    | `RESEND_API_KEY` | Yes | API key from [Resend](https://resend.com) for the contact form |
-    | `DEEPSEEK_API_KEY` | For AI chat | API key from [DeepSeek](https://platform.deepseek.com) for the "Ask My Portfolio" assistant |
-    | `NEXT_PUBLIC_WS_URL` | No | WebSocket server URL for realtime features (cursors, chat, presence) |
-    | `UMAMI_DOMAIN` | No | Umami analytics script URL |
-    | `UMAMI_SITE_ID` | No | Umami website ID |
-
-4. **Run the development server:**
-
-    ```bash
-    npm run dev
-    ```
-
-5. Open [http://localhost:3000](http://localhost:3000) and see the magic.
-
----
-
-## Personalization
-
-All personal info is centralized in [`src/data/config.ts`](src/data/config.ts):
-
-```ts
-const config = {
-  title: "Nilesh Raj | AI/ML Engineer & FDE",
-  author: "Nilesh Raj",
-  email: "nileshraj1735@gmail.com",
-  site: "https://portfolio-nilesh-pied.vercel.app",
-  githubUsername: "Nilesh1735",
-  githubRepo: "Portfolio-Nilesh",
-  social: {
-    linkedin: "https://www.linkedin.com/in/nilesh-raj-nr1735",
-    github: "https://github.com/Nilesh1735",
-    // ...
-  },
-};
+```bash
+git clone https://github.com/Nilesh1735/Portfolio-Nilesh.git
+cd Portfolio-Nilesh
+npm install
+cp .env.example .env.local   # then fill in what you need
+npm run dev
 ```
 
-Other files to customize:
+Open http://localhost:3000. Node 18 or newer.
 
-| File | What to change |
+### Environment
+
+Every variable is optional. The site renders fully without any of them; the features below simply switch off.
+
+| Variable | Enables |
 |---|---|
-| `src/data/projects.tsx` | Projects, screenshots, descriptions, and tech stacks |
-| `src/data/constants.ts` | Skills list and work experience |
-| `public/Nilesh_Raj_Resume.pdf` | Résumé PDF for the resume page |
-| `public/assets/me.jpg` | Profile photo |
-| `public/assets/seo/og-image.png` | Social share preview image |
+| `DEEPSEEK_API_KEY` | The "ask my portfolio" assistant. Without it the chat replies that it is unavailable. |
+| `RESEND_API_KEY` | The `/api/send` contact endpoint. Note that the `/contact` page is a list of links and does not post to it, so this is unused unless you wire a form back up. |
+| `NEXT_PUBLIC_GA_ID` | Google Analytics. |
+| `UMAMI_DOMAIN`, `UMAMI_SITE_ID` | Umami analytics. Both are required together. |
 
-### Projects
+## Making it yours
 
-Screenshots live under `public/assets/projects-screenshots/<project-id>/`. Current projects:
+Everything personal lives in `src/data`:
 
-- [OMNICREW AI](https://github.com/Nilesh1735/OMNICREW-AI) — Autonomous Web Extraction & Enrichment Platform
-- [LumanGuide](https://github.com/Nilesh1735/LumanGuide-Onboarding-Illuminated) — Enterprise Agentic RAG System & Team Navigator
+| File | Holds |
+|---|---|
+| `config.ts` | Name, title, email, site URL, social links, SEO keywords, and the GitHub repo the activity section features |
+| `constants.ts` | Work experience. The experience section renders straight from here |
+| `highlights.ts` | Projects: title, blurb, categories, card image, live and code links |
+| `stack.ts` | The grouped skill stack, education, certifications and books |
+| `knowledge.ts` | The grounding text and system prompt for the AI assistant. Keep it in step with the rest, or the bot will contradict the page |
 
----
+Assets:
 
-## Updating the 3D Keyboard Skills
+| Path | What |
+|---|---|
+| `public/images/avatar.webp` | Hero portrait, resting state |
+| `public/images/avatar-blush.webp` | Hero portrait, hover state |
+| `src/app/icon.png`, `favicon.ico`, `apple-icon.png` | Tab and touch icons. Generated from the resting portrait so they match |
+| `public/resume.pdf` | Served by the `/resume` route |
+| `public/images/*.webp` | Project card images, 16:10 |
+| `public/llms.txt` | Plain-text summary for language models |
 
-The 3D keyboard keycaps are baked into a Spline file. To update the skills displayed on the keyboard:
+The Open Graph and Twitter preview images are generated at request time from `src/app/opengraph-image.tsx`. If you edit them, give every element with more than one child an explicit `display`, because Satori throws without it and the route then returns nothing at all.
 
-1. **Import** the `public/assets/skills-keyboard.spline` file into [Spline](https://spline.design/)
-2. **Unhide** the keycap objects you want to edit
-3. **Update** the logo images on each keycap to your new skill icons
-4. **Rename** each keycap object to match the skill's `name` field in `src/data/constants.ts` (e.g. `python`, `langchain`, `react`)
-5. **Hide** all keycap objects again
-6. **Export** the scene and overwrite `public/assets/skills-keyboard.spline`
+## Routes
 
-After updating the Spline file, make sure `src/data/constants.ts` has matching entries for every skill on the keyboard:
+| Route | |
+|---|---|
+| `/` | Hero, highlights, GitHub activity, experience, skill stack, education |
+| `/about` | Long-form bio |
+| `/contact` | Email, LinkedIn, GitHub, AgentNine |
+| `/resume` | Embedded PDF viewer |
 
-```ts
-export const SKILLS: Record<SkillNames, Skill> = {
-  python: { name: "python", label: "Python", shortDescription: "...", ... },
-  langchain: { name: "langchain", label: "LangChain", shortDescription: "...", ... },
-  // ... add/remove entries to match your keyboard
-};
-```
+## Notes for anyone picking this up
 
-The `SkillNames` enum, `SKILLS` record, and the Spline keycap names must all stay in sync for the keyboard interactions to work correctly.
+- **The site is dark only.** A light palette still exists in `globals.css`, but no theme toggle is mounted.
+- **There is unused code in the tree.** An earlier revision of this portfolio used Spline, ReactFlow, GSAP ScrollTrigger, Lenis, a particle canvas, a custom cursor and a realtime chat. Those are gone from the rendered site, but roughly 60 modules remain unreachable in `src/components`. They are tree-shaken, so visitors never download them.
+- **Some dependencies are now dead too**, `gsap`, `lenis`, `@splidejs/react-splide` and `canvas-confetti` among them. They can be uninstalled once the unused modules go.
 
----
+## Credits
 
-## Realtime Features (Optional)
+Originally based on the [3d-portfolio](https://github.com/Naresh-Khatri/3d-portfolio) template by [Naresh Khatri](https://github.com/Naresh-Khatri). Little of that template survives in the current design, but it was the starting point and deserves the credit.
 
-The portfolio supports optional realtime features powered by a **separate backend API**:
-
-- **Live cursors** — See other visitors' cursors in realtime
-- **Online presence** — Shows who's currently on the site
-- **Chat** — Live chat between visitors
-
-These features activate automatically when the `NEXT_PUBLIC_WS_URL` environment variable is set. Without it, the portfolio works perfectly fine as a static site — no realtime features, no backend dependency.
-
----
-
-## Deployment
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nilesh1735/Portfolio-Nilesh)
-
-This site is deployed on **Vercel**. To deploy your own:
-
-1. Push your code to a GitHub repository
-2. Connect the repository to [Vercel](https://vercel.com)
-3. Add your environment variables in the Vercel dashboard
-4. Vercel handles the rest — automatic deployments on every push
-
----
-
-## License & Credits
-
-This project is open source and available under the [MIT License](LICENSE).
-
-Built on the excellent [3d-portfolio](https://github.com/Naresh-Khatri/3d-portfolio) template by [Naresh Khatri](https://github.com/Naresh-Khatri). If you use this template, a credit or link back to the original repo would be much appreciated.
+Licensed MIT, inherited from that template. No `LICENSE` file is committed yet; add one if you want the terms stated explicitly in the repo.
