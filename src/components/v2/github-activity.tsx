@@ -28,7 +28,7 @@ function Stat({ label, value }: { label: string; value: number }) {
 
 function Shell({ children }: { children: React.ReactNode }) {
   return (
-    <section id="github" className="px-4 py-14">
+    <section id="github" className="anim-up delay-3 px-4 py-14">
       <div className="mx-auto max-w-[752px]">
         <h2 className="mb-1 text-center text-[18.4px] text-foreground">on github</h2>
         <p className="mb-8 text-center text-[13.6px] text-muted-foreground">
@@ -78,7 +78,7 @@ export function GithubActivityView({ profile }: { profile: GithubProfile }) {
                 href={repo.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex h-full flex-col rounded-[20px] border border-border bg-card p-5 transition-colors duration-200 hover:border-foreground/25"
+                className="group flex h-full flex-col rounded-[20px] border border-border bg-card p-5 transition-[transform,border-color] duration-300 ease-out hover:-translate-y-1 hover:border-foreground/25 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
                 <span className="inline-flex items-center gap-1.5 text-[15.2px] text-foreground">
                   {repo.label}

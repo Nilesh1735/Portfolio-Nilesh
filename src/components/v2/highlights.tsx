@@ -7,18 +7,19 @@ import { ArrowUpRight } from "lucide-react";
 import { CATEGORIES, HIGHLIGHTS } from "@/data/highlights";
 
 export default function Highlights() {
-  const [active, setActive] = useState<string>("all");
+  // No "all" pill: the row stays short, and nothing selected means
+  // everything is shown. Clicking the active pill clears it again.
+  const [active, setActive] = useState<string | null>(null);
 
-  const shown =
-    active === "all"
-      ? HIGHLIGHTS
-      : HIGHLIGHTS.filter((h) => h.categories.includes(active));
+  const shown = active
+    ? HIGHLIGHTS.filter((h) => h.categories.includes(active))
+    : HIGHLIGHTS;
 
   return (
     <div>
       {/* Category pills. A radiogroup, because exactly one is ever active. */}
       <div
-        role="radiogroup"
+        role="group"
         aria-label="Filter highlights by category"
         className="mx-auto mb-8 flex w-fit max-w-full flex-wrap justify-center gap-1 rounded-full p-1.5"
         style={{ background: "var(--brand)" }}
@@ -29,9 +30,8 @@ export default function Highlights() {
             <button
               key={cat}
               type="button"
-              role="radio"
-              aria-checked={selected}
-              onClick={() => setActive(cat)}
+              aria-pressed={selected}
+              onClick={() => setActive(selected ? null : cat)}
               className="rounded-full px-4 py-1.5 text-[13.6px] transition-colors duration-200"
               style={
                 selected
@@ -48,7 +48,7 @@ export default function Highlights() {
       <ul className="grid gap-5 sm:grid-cols-2">
         {shown.map((h, i) => (
           <li key={h.id} className="group">
-            <article className="flex h-full flex-col overflow-hidden rounded-[20px] border border-border bg-card">
+            <article className="flex h-full flex-col overflow-hidden rounded-[20px] border border-border bg-card transition-[transform,border-color] duration-300 ease-out will-change-transform group-hover:-translate-y-1 group-hover:border-foreground/25 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0">
               <div className="relative aspect-[16/10] overflow-hidden bg-secondary">
                 <Image
                   src={h.image}

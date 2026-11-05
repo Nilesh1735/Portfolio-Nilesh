@@ -33,7 +33,7 @@ export default function SiteNav() {
   const is = (href: string) => (href === "/" ? pathname === "/" : pathname?.startsWith(href));
 
   return (
-    <header className="w-full pt-8">
+    <header className="anim-down delay-1 w-full pt-8">
       <nav aria-label="Primary" className="flex items-center justify-center gap-1">
         {LEFT.map((l) => (
           <NavLink key={l.href} {...l} active={!!is(l.href)} />

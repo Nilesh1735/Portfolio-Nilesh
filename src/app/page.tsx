@@ -6,6 +6,7 @@ import ExperienceList from "@/components/v2/experience-list";
 import SkillStack from "@/components/v2/skill-stack";
 import Section from "@/components/v2/section";
 import GithubActivity from "@/components/v2/github-activity";
+import Books from "@/components/v2/books";
 import { config } from "@/data/config";
 import { EDUCATION, CERTIFICATIONS } from "@/data/stack";
 
@@ -18,16 +19,23 @@ export default function HomePage() {
   return (
     <main>
       {/* Hero */}
-      <section className="px-4 pb-6 pt-14">
+      <section className="anim-up delay-2 px-4 pb-6 pt-14">
         <div className="mx-auto flex max-w-[600px] flex-col items-center text-center">
           {/* The arc's open bottom cradles the avatar; the negative margin
               is tuned to the viewBox, not guessed. */}
           <div className="relative flex flex-col items-center">
-            <CurvedName
-              text={config.author}
-              className="h-[150px] w-[282px] text-foreground"
-            />
-            <div className="-mt-[104px]">
+            {/* The name is the page heading. Wrapping the arc in an h1 gives
+                the document a top-level heading without changing the layout;
+                the SVG already carries the accessible name. */}
+            <h1 className="contents">
+              <CurvedName
+                text={config.author}
+                className="anim-fade delay-3 h-[150px] w-[300px] text-foreground"
+              />
+            </h1>
+            {/* Clearance tuned so the arc's descenders clear the circle;
+                a tighter overlap was cutting into the lettering. */}
+            <div className="anim-pop delay-5 -mt-[78px]">
               <AvatarMark alt={`${config.author} avatar`} size={160} />
             </div>
           </div>
@@ -103,6 +111,10 @@ export default function HomePage() {
             </li>
           ))}
         </ul>
+      </Section>
+
+      <Section id="books" title="books" subtitle="what i have been reading">
+        <Books />
       </Section>
     </main>
   );

@@ -47,18 +47,24 @@ function Row({ exp }: { exp: (typeof EXPERIENCE)[number] }) {
         </div>
       </div>
 
-      {open && (
-        <ul id={panelId} className="mt-3 space-y-2 pr-4">
-          {(exp.description ?? []).map((point) => (
-            <li
-              key={point}
-              className="text-[13.6px] leading-relaxed text-muted-foreground before:mr-2 before:text-[color:var(--brand-text)] before:content-['–']"
-            >
-              {point}
-            </li>
-          ))}
-        </ul>
-      )}
+      {/* Always rendered so the height can transition; the grid 0fr->1fr
+          trick animates to an unknown height without measuring it in JS.
+          `inert` keeps the collapsed bullets out of the tab order and the
+          accessibility tree, which plain overflow:hidden would not. */}
+      <div className="disclosure" data-open={open} aria-hidden={!open} inert={!open || undefined}>
+        <div>
+          <ul id={panelId} className="space-y-2 pr-4">
+            {(exp.description ?? []).map((point) => (
+              <li
+                key={point}
+                className="text-[13.6px] leading-relaxed text-muted-foreground before:mr-2 before:text-[color:var(--brand-text)] before:content-['–']"
+              >
+                {point}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </li>
   );
 }

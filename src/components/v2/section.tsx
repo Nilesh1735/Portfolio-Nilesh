@@ -18,7 +18,7 @@ export default function Section({
   wide?: boolean;
 }) {
   return (
-    <section id={id} className="px-4 py-14">
+    <section id={id} className="anim-up delay-3 px-4 py-14">
       <div className={wide ? "mx-auto max-w-[752px]" : "mx-auto max-w-[600px]"}>
         {title && (
           <h2 className="mb-1 text-center text-[18.4px] text-foreground">{title}</h2>

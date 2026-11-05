@@ -1,9 +1,9 @@
 const config = {
   title: "Nilesh Raj | Founder & AI Engineer @AgentNine",
   description: {
-    long: "Explore the portfolio of Nilesh Raj — Founder & AI Engineer at AgentNine, building and deploying agentic AI systems with LangGraph, CrewAI, LangChain, FastAPI and Docker, from architecture to live production.",
+    long: "Portfolio of Nilesh Raj, Founder and AI Engineer at AgentNine. Builds and deploys agentic AI systems with LangGraph, CrewAI, LangChain, FastAPI and Docker, from architecture to live production.",
     short:
-      "Portfolio of Nilesh Raj — Founder & AI Engineer @AgentNine, shipping agentic AI systems end to end.",
+      "Portfolio of Nilesh Raj, Founder and AI Engineer at AgentNine, shipping agentic AI systems end to end.",
   },
   keywords: [
     "Nilesh Raj",
@@ -33,7 +33,7 @@ const config = {
   site: "https://nileshraj-portfolio.vercel.app",
   location: "Varanasi, Uttar Pradesh, India",
 
-  // Top project — drives the GitHub section's featured repo.
+  // Top project. Drives the GitHub section's featured repo.
   githubUsername: "Nilesh1735",
   githubRepo: "AgentNine",
 

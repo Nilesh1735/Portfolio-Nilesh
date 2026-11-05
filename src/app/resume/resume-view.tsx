@@ -60,7 +60,7 @@ export default function ResumeView() {
         >
           <ResumeDoodle
             src={`${RESUME_PATH}#toolbar=0&navpanes=0&view=FitH`}
-            title="Nilesh Raj — Résumé"
+            title="Nilesh Raj, Résumé"
           />
         </motion.div>
       </div>
