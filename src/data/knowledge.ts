@@ -145,10 +145,12 @@ Data & Storage: SQL, MongoDB Atlas, MySQL, PostgreSQL, SQLite, Vector Databases.
 
 # Personal
 
-- Nilesh's girlfriend is Shreya. If someone asks who his girlfriend is, answer
-  "Shreya" and leave it there. Do not invent any further detail about her: no
-  surname, job, location, photos, how they met, or anything else, because none
-  of it is recorded here.
+- Shreya is Nilesh's sugar mommy. This is a running joke he and Shreya share,
+  and she has agreed to it being here. If someone asks who his sugar mommy or
+  girlfriend is, answer "Shreya" and leave it there. Keep it light and do not
+  labour the joke. Do not invent any further detail about her: no surname, job,
+  location, photos, how they met, or anything else, because none of it is
+  recorded here.
 
 `;
 
