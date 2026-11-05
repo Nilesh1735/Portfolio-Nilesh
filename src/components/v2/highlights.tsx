@@ -4,16 +4,21 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { CATEGORIES, HIGHLIGHTS } from "@/data/highlights";
+import { CATEGORIES, BOOKS_CATEGORY, HIGHLIGHTS } from "@/data/highlights";
+import { BOOKS } from "@/data/stack";
 
 export default function Highlights() {
-  // No "all" pill: the row stays short, and nothing selected means
-  // everything is shown. Clicking the active pill clears it again.
+  // No "all" pill: the row stays short, and nothing selected means every
+  // project is shown. Clicking the active pill clears it again.
   const [active, setActive] = useState<string | null>(null);
 
-  const shown = active
-    ? HIGHLIGHTS.filter((h) => h.categories.includes(active))
-    : HIGHLIGHTS;
+  // "books" is the odd one out: it replaces the panel rather than filtering
+  // it, since books have no overlap with the project categories.
+  const showingBooks = active === BOOKS_CATEGORY;
+  const shown =
+    active && !showingBooks
+      ? HIGHLIGHTS.filter((h) => h.categories.includes(active))
+      : HIGHLIGHTS;
 
   return (
     <div>
@@ -45,6 +50,18 @@ export default function Highlights() {
         })}
       </div>
 
+      {showingBooks ? (
+        <ul className="mx-auto max-w-[600px] divide-y divide-border">
+          {BOOKS.map((book) => (
+            <li key={book.title} className="flex items-start justify-between gap-6 py-4">
+              <p className="min-w-0 text-[15.2px] text-foreground">{book.title}</p>
+              <p className="shrink-0 text-right text-[13.6px] text-muted-foreground">
+                {book.author}
+              </p>
+            </li>
+          ))}
+        </ul>
+      ) : (
       <ul className="grid gap-5 sm:grid-cols-2">
         {shown.map((h, i) => (
           <li key={h.id} className="group">
@@ -90,8 +107,9 @@ export default function Highlights() {
           </li>
         ))}
       </ul>
+      )}
 
-      {shown.length === 0 && (
+      {!showingBooks && shown.length === 0 && (
         <p className="py-8 text-center text-[13.6px] text-muted-foreground">
           nothing here yet.
         </p>

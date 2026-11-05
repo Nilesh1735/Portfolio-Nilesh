@@ -8,7 +8,10 @@ export type Highlight = {
   code: string;
 };
 
-export const CATEGORIES = ["agentic ai", "rag", "ml", "web"] as const;
+export const CATEGORIES = ["agentic ai", "rag", "ml", "web", "books"] as const;
+
+/** The one pill that swaps the panel's contents rather than filtering it. */
+export const BOOKS_CATEGORY = "books";
 
 export const HIGHLIGHTS: Highlight[] = [
   {
