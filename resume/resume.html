@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Nilesh Raj, Résumé</title>
+<style>
+  /* Source for public/resume.pdf. Render with: node resume/build.mjs
+     Kept in the repo so the résumé stays editable; the previous PDF was
+     built with LaTeX elsewhere and had no source here. */
+  /* Page size and margins are set by resume/build.mjs. */
+  @page { size: A4; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Latin Modern Roman", "Nimbus Roman", "Liberation Serif", "Times New Roman", Times, serif;
+    font-size: 8.9pt;
+    line-height: 1.21;
+    color: #000;
+  }
+  h1 { font-size: 21pt; font-weight: 400; text-align: center; margin: 0 0 3pt; letter-spacing: .3pt; }
+  .contact { text-align: center; font-size: 8.6pt; margin-bottom: 8pt; }
+  .contact a { color: #000; }
+  h2 {
+    font-size: 11pt; font-weight: 400; font-variant: small-caps; letter-spacing: .4pt;
+    margin: 6pt 0 1pt; padding-bottom: .5pt; border-bottom: .6pt solid #000;
+  }
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 10pt; }
+  .row .l { font-weight: 700; }
+  .row .r { font-style: italic; white-space: nowrap; font-size: 9.2pt; }
+  .sub { display: flex; justify-content: space-between; align-items: baseline; font-style: italic; font-size: 9.2pt; gap: 10pt; }
+  .entry { margin-top: 3pt; }
+  ul { margin: 2pt 0 0; padding-left: 13pt; }
+  li { margin-bottom: .8pt; }
+  .skills p { margin: 1.4pt 0; }
+  .links a { color: #000; }
+  .tight { margin-top: 3pt; }
+</style>
+</head>
+<body>
+
+<h1>Nilesh Raj</h1>
+<div class="contact">
+  +91-8887522416 &nbsp;|&nbsp;
+  <a href="mailto:nileshraj1735@gmail.com">nileshraj1735@gmail.com</a> &nbsp;|&nbsp;
+  <a href="https://www.linkedin.com/in/nilesh-raj-ai">LinkedIn</a> &nbsp;|&nbsp;
+  <a href="https://github.com/Nilesh1735">GitHub</a> &nbsp;|&nbsp;
+  <a href="https://nileshraj-portfolio.vercel.app">Portfolio</a>
+</div>
+
+<h2>Summary</h2>
+<p class="tight">
+Founder and AI engineer. I build and ship AI systems end to end, from architecture to live
+deployment: agentic systems, RAG pipelines and fine-tuned transformers. I run AgentNine, a live
+directory of open-source AI agents, and have shipped CrewAI multi-agent platforms, LangGraph RAG
+pipelines and BERT classifiers to production. I treat JWT RBAC, rate limiting and observability as
+seriously as prompt design and model accuracy. NVIDIA-certified in LLM application development.
+</p>
+
+<h2>Experience</h2>
+
+<div class="entry">
+  <div class="row"><span class="l">Founder and AI Engineer</span><span class="r">Jun 2026 &ndash; Present</span></div>
+  <div class="sub"><span>AgentNine</span><span>Varanasi, India</span></div>
+  <ul>
+    <li>Founded and shipped <a href="https://agentnine.pro">agentnine.pro</a>, a directory of open-source AI
+        agents. Each listing carries its source repository, install steps for Windows, macOS and Linux,
+        the access it requests, and what is still undocumented.</li>
+    <li>Built the product on Next.js App Router, React 19, TypeScript and Tailwind CSS, with Supabase
+        Postgres for auth and data, a Vitest suite, and deployment on Vercel.</li>
+    <li>Designed the browse experience: category filters, operating-system and API-key facets, Fuse.js
+        full-text search, and side-by-side comparison of three agents without an account.</li>
+    <li>Defined the five-step setup verification every listing passes before publication: the exact commit
+        reviewed, the operating systems checked, the install command, a first task actually run, and the
+        date. Grew the catalogue past 110 agents across coding, automation, research and content.</li>
+    <li>Lead product direction and technical decisions with a small team across product, engineering and launch.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="row"><span class="l">AI/ML Trainee (Internship)</span><span class="r">Feb 2026 &ndash; May 2026</span></div>
+  <div class="sub"><span>Technosavvys Education Technology</span><span>Remote</span></div>
+  <ul>
+    <li>Fine-tuned a BERT classifier on 500+ student course reviews with Hugging Face. It reached 88%
+        accuracy, a 15% lift over the TF-IDF baseline, using learning-rate scheduling and dropout tuning.</li>
+    <li>Shipped a Streamlit dashboard backed by SQLite that cut report generation for 10+ mentors across
+        5+ courses from hours to minutes.</li>
+    <li>Rewrote the NLP preprocessing pipeline (text normalisation, feature extraction), which raised
+        baseline accuracy and removed manual data entry from the weekly reporting workflow.</li>
+    <li>Worked directly with course mentors to turn raw classifier output into a view non-technical staff could use.</li>
+  </ul>
+</div>
+
+<h2>Projects</h2>
+
+<div class="entry">
+  <div class="row">
+    <span class="l">AgentNine <span style="font-weight:400;font-style:italic">| Next.js, React, TypeScript, Supabase, Tailwind, Vitest</span></span>
+    <span class="r links"><a href="https://agentnine.pro">Live</a> | <a href="https://github.com/Nilesh1735/AgentNine">Code</a> &nbsp; 2026</span>
+  </div>
+  <ul>
+    <li>Open-source AI agent directory, 110+ listings, with faceted search, three-way comparison, and
+        per-listing setup, access and verification detail.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="row">
+    <span class="l">OmniCrew AI <span style="font-weight:400;font-style:italic">| Python, CrewAI, LangChain, FastAPI, Redis, Docker</span></span>
+    <span class="r links"><a href="https://omnicrew-ai.vercel.app/">Live</a> | <a href="https://github.com/Nilesh1735/OMNICREW-AI">Code</a> &nbsp; 2026</span>
+  </div>
+  <ul>
+    <li>Built a multi-agent pipeline on CrewAI with a 3-tier LLM fallback router (DeepSeek, Mistral AI,
+        Gemini), reaching 99.9% task completion on real-time web extraction.</li>
+    <li>Added Redis-backed MD5 caching for LLM responses, cutting latency from 2.5s to under 50ms on
+        cache hits at no extra token cost.</li>
+    <li>Cut redundant database writes by around 35% with MD5 semantic deduplication and INSERT IGNORE.</li>
+    <li>Blocked SSRF by resolving target URLs and rejecting private, local and cloud-metadata IP ranges
+        before any fetch.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="row">
+    <span class="l">LumanGuide <span style="font-weight:400;font-style:italic">| Python, LangGraph, FAISS, FastAPI, MongoDB, LangSmith</span></span>
+    <span class="r links"><a href="https://lumanguide-app.streamlit.app/">Live</a> | <a href="https://github.com/Nilesh1735/LumanGuide-Onboarding-Illuminated">Code</a> &nbsp; 2026</span>
+  </div>
+  <ul>
+    <li>Built an agentic RAG system on a LangGraph state machine with document grading and query
+        routing, cutting retrieval latency by 30% against a naive RAG baseline.</li>
+    <li>Added a grade-and-rewrite cycle: an LLM-as-judge node scores retrieval quality and routes poor
+        results to a rewrite node that loops back.</li>
+    <li>Built a FAISS vector store with semantic chunking for sub-second retrieval, and moved auth from
+        SQLite to MongoDB Atlas, ending the data-wipe incidents.</li>
+    <li>Added prompt-injection guardrails, JWT RBAC and regex secret scanning, redacting credentials
+        before anything reaches the vector store.</li>
+  </ul>
+</div>
+
+<h2>Technical Skills</h2>
+<div class="skills">
+  <p><b>AI and GenAI:</b> LangGraph, CrewAI, LangChain (LCEL), agentic systems, RAG pipelines, prompt
+     engineering, NLP, BERT, transformers, semantic chunking, embedding models, vector search (FAISS),
+     OpenAI API, Mistral AI, DeepSeek, Gemini API, NVIDIA NIM, LangSmith</p>
+  <p><b>ML Engineering:</b> PyTorch, Scikit-learn, Hugging Face, Pandas, NumPy, fine-tuning, transfer
+     learning, hyperparameter tuning, feature engineering, model evaluation, sentiment analysis</p>
+  <p><b>Product and Web:</b> Next.js, React, TypeScript, Tailwind CSS, Supabase, Streamlit, Vitest, Vercel</p>
+  <p><b>Infrastructure:</b> Python, FastAPI, Docker, REST APIs, Redis, AWS (S3, EC2, Lambda), Git,
+     CI/CD, Pydantic</p>
+  <p><b>Data and Storage:</b> SQL, MongoDB Atlas, MySQL, PostgreSQL, SQLite, vector databases</p>
+</div>
+
+<h2>Education</h2>
+<div class="entry">
+  <div class="row"><span class="l">United University</span><span class="r">Aug 2022 &ndash; May 2025</span></div>
+  <div class="sub"><span>BCA, Artificial Intelligence (IBM Specialization)</span><span>Prayagraj, UP</span></div>
+</div>
+
+<h2>Certifications</h2>
+<div class="entry">
+  <div class="row"><span class="l">Building LLM Applications with Prompt Engineering <span style="font-weight:400;font-style:italic">| NVIDIA Deep Learning Institute</span></span><span class="r">2025</span></div>
+</div>
+
+</body>
+</html>

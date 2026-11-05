@@ -57,9 +57,7 @@ export const EDUCATION: Education[] = [
 export type Certification = { title: string; issuer: string; year: string };
 
 export const CERTIFICATIONS: Certification[] = [
-  { title: "Introduction to Generative AI – Art of the Possible", issuer: "Amazon Web Services", year: "may 2026" },
   { title: "Building LLM Applications with Prompt Engineering", issuer: "NVIDIA Deep Learning Institute", year: "2025" },
-  { title: "Introduction to Python", issuer: "IBM", year: "apr 2023" },
 ];
 
 export type Book = { title: string; author: string };

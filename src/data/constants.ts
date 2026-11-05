@@ -290,7 +290,7 @@ export const EXPERIENCE: Experience[] = [
       "Founded and shipped AgentNine (agentnine.pro), an independent directory of open-source AI agents where every listing carries its source repository, install steps for Windows, macOS and Linux, the access the agent requests, and an explicit note of what is still undocumented.",
       "Built the product on Next.js App Router, React 19, TypeScript and Tailwind CSS with Supabase Postgres for auth and data, deployed on Vercel and covered by a Vitest suite.",
       "Designed the browse experience around category filters, operating-system and API-key facets, Fuse.js full-text search, and side-by-side comparison of up to three agents with no account required.",
-      "Defined a 5-point verification checklist every listing passes before publication, and grew the catalogue past 40 new listings across coding, automation, research and content agents.",
+      "Defined the five-step setup verification every listing passes before publication: the exact commit reviewed, the operating systems checked, the install command, a first task actually run, and the date. Grew the catalogue past 110 listings across coding, automation, research and content agents.",
       "Lead product direction and technical decisions, working with a small team across product, engineering and launch.",
     ],
     skills: [
