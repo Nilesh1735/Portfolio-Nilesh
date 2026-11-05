@@ -4,7 +4,8 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { Download, ArrowLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import ResumeDoodle from "./resume-doodle";
 
 // Served from public/resume.pdf
@@ -36,16 +37,19 @@ export default function ResumeView() {
             <ArrowLeft className="h-4 w-4" />
             Back to portfolio
           </Link>
-          <Button>
-            <a
-              href={RESUME_PATH}
-              download
-              className="flex gap-2 text-sm transition-colors hover:text-foreground"
-            >
-              <Download className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
-              Download PDF
-            </a>
-          </Button>
+          {/* Styled as an anchor rather than wrapped in <Button>. That
+              component runs addClassNameRecursively(children,
+              "pointer-events-none"), which made the download link
+              unclickable, and its children array also breaks Radix Slot,
+              so asChild is not an option either. */}
+          <a
+            href={RESUME_PATH}
+            download="Nilesh-Raj-Resume.pdf"
+            className={cn(buttonVariants(), "group gap-2 text-sm no-underline")}
+          >
+            <Download className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
+            Download PDF
+          </a>
         </motion.div>
       </div>
 
