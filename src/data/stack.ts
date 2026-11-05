@@ -61,3 +61,16 @@ export const CERTIFICATIONS: Certification[] = [
   { title: "Building LLM Applications with Prompt Engineering", issuer: "NVIDIA Deep Learning Institute", year: "2025" },
   { title: "Introduction to Python", issuer: "IBM", year: "apr 2023" },
 ];
+
+export type Book = { title: string; author: string };
+
+/** Books read, newest interest first. Plain text, no cover images to fetch. */
+export const BOOKS: Book[] = [
+  { title: "Psycho-Cybernetics", author: "Maxwell Maltz" },
+  { title: "12 Rules for Life", author: "Jordan Peterson" },
+  { title: "The Courage to Be Disliked", author: "Fumitake Koga and Ichiro Kishimi" },
+  {
+    title: "Becoming Supernatural: How Common People Are Doing the Uncommon",
+    author: "Joe Dispenza",
+  },
+];

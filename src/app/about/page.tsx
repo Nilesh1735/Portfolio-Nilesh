@@ -19,7 +19,7 @@ export default function AboutPage() {
 
         <div className="space-y-5 text-[15.2px] leading-relaxed text-muted-foreground">
           <p>
-            i&apos;m an ai engineer who builds and ships ai systems end to end —
+            i&apos;m an ai engineer who builds and ships ai systems end to end:
             architecture, implementation, and the unglamorous part where it has to
             keep running in production.
           </p>
@@ -49,9 +49,9 @@ export default function AboutPage() {
           </p>
           <p>
             before that, as an ai/ml trainee at technosavvys, i fine-tuned a bert
-            classifier on 500+ student reviews with hugging face — 88% accuracy, a
-            15% lift over a tf-idf baseline — and shipped the streamlit dashboard
-            mentors actually used.
+            classifier on 500+ student reviews with hugging face. it hit 88%
+            accuracy, a 15% lift over a tf-idf baseline, and i shipped the
+            streamlit dashboard mentors actually used.
           </p>
           <p>
             i&apos;m open to ai engineer and applied ai roles, remote or hybrid.

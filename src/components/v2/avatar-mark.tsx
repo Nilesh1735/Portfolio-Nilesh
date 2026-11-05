@@ -1,56 +1,52 @@
 import Image from "next/image";
 
 /**
- * The accent circle at the centre of the hero.
+ * The portrait mark in the hero.
  *
- * PLACEHOLDER: a neutral geometric mark stands in until an illustrated
- * portrait is supplied. Drop a square SVG/PNG at /images/avatar.svg (or
- * .png) and pass `src` — the circle, sizing and mask stay as they are.
+ * Two states: the plain portrait at rest, the blushing one on hover. Both
+ * are stacked and cross-faded with opacity alone — no layout, no repaint,
+ * so the swap runs on the compositor and costs nothing on a frame.
+ *
+ * The plain state is the default because hover does not exist on touch,
+ * where the resting state is all anyone sees. Both images are eagerly
+ * loaded: the hover one is 21KB and fetching it on first hover would show
+ * a blank flash.
+ *
+ * The brand circle is baked into both images, so nothing is painted
+ * behind them. The icon files are generated from the plain variant, so the
+ * tab icon matches the resting state.
  */
 export default function AvatarMark({
-  src,
   alt,
   size = 168,
 }: {
-  src?: string;
   alt: string;
   size?: number;
 }) {
   return (
-    <div
-      className="relative shrink-0 overflow-hidden rounded-full"
-      style={{ width: size, height: size, background: "var(--brand)" }}
+    <span
+      className="group relative block shrink-0 rounded-full"
+      style={{ width: size, height: size }}
     >
-      {src ? (
-        <Image
-          src={src}
-          alt={alt}
-          width={size}
-          height={size}
-          priority
-          className="h-full w-full object-cover"
-        />
-      ) : (
-        // Interim mark: a monogram-adjacent glyph that reads as intentional
-        // rather than as a missing image.
-        <svg
-          viewBox="0 0 100 100"
-          className="h-full w-full"
-          role="img"
-          aria-label={alt}
-        >
-          <g
-            fill="none"
-            stroke="#fff"
-            strokeWidth="4.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M34 68V32l32 36V32" />
-            <circle cx="50" cy="50" r="30" strokeOpacity="0.35" />
-          </g>
-        </svg>
-      )}
-    </div>
+      <Image
+        src="/images/avatar.webp"
+        alt={alt}
+        width={size}
+        height={size}
+        priority
+        sizes={`${size}px`}
+        className="absolute inset-0 h-full w-full rounded-full transition-opacity duration-300 ease-out group-hover:opacity-0 motion-reduce:transition-none"
+      />
+      <Image
+        src="/images/avatar-blush.webp"
+        alt=""
+        aria-hidden="true"
+        width={size}
+        height={size}
+        priority
+        sizes={`${size}px`}
+        className="absolute inset-0 h-full w-full rounded-full opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100 motion-reduce:transition-none"
+      />
+    </span>
   );
 }
