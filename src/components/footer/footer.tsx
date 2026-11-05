@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { footer } from "./config";
-import { Button } from "../ui/button";
 import SocialMediaButtons from "../social/social-media-icons";
 import { config } from "@/data/config";
 
@@ -30,13 +29,20 @@ function Footer() {
         {footer.map((link, index) => {
           const { title, href } = link;
 
+          // External, so open in a new tab and carry rel. Previously these
+          // wrapped a <Button> inside the <Link>, which is invalid HTML and
+          // announces as a button nested in a link to screen readers.
+          const external = href.startsWith("http");
+
           return (
             <Link
-              className="text-xs underline-offset-4 hover:underline"
+              className="text-xs text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
               href={href}
               key={`l_${index}`}
+              target={external ? "_blank" : undefined}
+              rel={external ? "noopener noreferrer" : undefined}
             >
-              <Button variant={"link"}>{title}</Button>
+              {title}
             </Link>
           );
         })}
