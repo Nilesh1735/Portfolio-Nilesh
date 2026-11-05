@@ -15,7 +15,8 @@ BCA, Artificial Intelligence (IBM Specialization), United University, Prayagraj
 1. AgentNine: An independent, community-led directory of open-source AI agents. Each
    listing links to its upstream repository and sets out install steps for Windows, macOS
    and Linux, the access the agent requests, the version reviewed, and what is still
-   undocumented. Every listing passes a 5-point verification checklist before publication.
+   undocumented. Every listing passes a five-step setup verification before publication, and the
+   catalogue holds 110+ agents.
    Built with Next.js App Router, React 19, TypeScript, Tailwind CSS 4, Supabase Postgres,
    Fuse.js search and Vitest; deployed on Vercel.
    Live: https://agentnine.pro | Code: https://github.com/Nilesh1735/AgentNine
@@ -51,9 +52,7 @@ Lambda), Git, CI/CD, Pydantic.
 Data & Storage: SQL, MongoDB Atlas, MySQL, PostgreSQL, SQLite, Vector Databases.
 
 ## Certifications
-Introduction to Generative AI - Art of the Possible, Amazon Web Services (May 2026).
 Building LLM Applications with Prompt Engineering, NVIDIA Deep Learning Institute (2025).
-Introduction to Python, IBM (Apr 2023).
 
 ## Contact
 Email: nileshraj1735@gmail.com

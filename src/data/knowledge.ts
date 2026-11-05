@@ -47,9 +47,10 @@ NVIDIA-certified in LLM application development.
 - Browse experience built around category filters, operating-system and API-key
   facets, Fuse.js full-text search, and side-by-side comparison of up to three
   agents with no account required. Saved agents via Google or email sign-in.
-- Defined a 5-point verification checklist every listing passes before publication;
-  grew the catalogue past 40 new listings across coding, automation, research and
-  content agents.
+- Defined the five-step setup verification every listing passes before publication:
+  the exact commit reviewed, the operating systems checked, the install command, a
+  first task actually run, and the date. Grew the catalogue past 110 listings across
+  coding, automation, research and content agents.
 - Leads product direction and technical decisions, working with a small team across
   product, engineering and launch.
 - Note: AgentNine's listing notes are a starting point, not a security audit or an
@@ -137,15 +138,11 @@ Data & Storage: SQL, MongoDB Atlas, MySQL, PostgreSQL, SQLite, Vector Databases.
 
 # Certifications
 
-- Introduction to Generative AI, Art of the Possible. Amazon Web Services (AWS),
-  issued May 2026. Foundation models, prompt engineering, responsible AI, and
-  real-world applications of AI across business and technology.
 - Building LLM Applications with Prompt Engineering. NVIDIA Deep Learning
   Institute (2025). Built LLM-powered applications using NVIDIA NIM (Llama 3.1)
   and LangChain with live API integration and Pydantic-structured output
   validation across a capstone agentic workflow.
-- Introduction to Python. IBM (April 2023). CognitiveClass track covering Python
-  fundamentals, data structures and scripting.
+
 `;
 
 export const SYSTEM_PROMPT = `You are "Nilesh's Portfolio Assistant", a friendly, concise AI guide embedded in Nilesh Raj's portfolio website. Nilesh is the Founder & AI Engineer at AgentNine.
