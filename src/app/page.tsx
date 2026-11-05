@@ -6,7 +6,6 @@ import ExperienceList from "@/components/v2/experience-list";
 import SkillStack from "@/components/v2/skill-stack";
 import Section from "@/components/v2/section";
 import GithubActivity from "@/components/v2/github-activity";
-import Books from "@/components/v2/books";
 import { config } from "@/data/config";
 import { EDUCATION, CERTIFICATIONS } from "@/data/stack";
 
@@ -111,10 +110,6 @@ export default function HomePage() {
             </li>
           ))}
         </ul>
-      </Section>
-
-      <Section id="books" title="books" subtitle="what i have been reading">
-        <Books />
       </Section>
     </main>
   );
