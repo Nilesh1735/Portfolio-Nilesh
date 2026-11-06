@@ -51,16 +51,33 @@ export default function Highlights() {
       </div>
 
       {showingBooks ? (
-        <ul className="mx-auto max-w-[600px] divide-y divide-border">
-          {BOOKS.map((book) => (
-            <li key={book.title} className="flex items-start justify-between gap-6 py-4">
-              <p className="min-w-0 text-[15.2px] text-foreground">{book.title}</p>
-              <p className="shrink-0 text-right text-[13.6px] text-muted-foreground">
-                {book.author}
-              </p>
-            </li>
-          ))}
-        </ul>
+        <section
+          className="mx-auto max-w-[600px]"
+          aria-labelledby="book-recommendations-title"
+        >
+          <h3
+            id="book-recommendations-title"
+            className="mb-1 text-[16px] text-foreground"
+          >
+            Books I&apos;ve read and recommend
+          </h3>
+          <p className="mb-3 text-[13.6px] text-muted-foreground">
+            A few books that have stayed with me.
+          </p>
+          <ul className="divide-y divide-border">
+            {BOOKS.map((book) => (
+              <li
+                key={book.title}
+                className="flex flex-col gap-1 py-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6"
+              >
+                <p className="min-w-0 text-[15.2px] text-foreground">{book.title}</p>
+                <p className="text-[13.6px] text-muted-foreground sm:shrink-0 sm:text-right">
+                  by {book.author}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
       ) : (
       <ul className="grid gap-5 sm:grid-cols-2">
         {shown.map((h, i) => (
