@@ -59,10 +59,10 @@ export default function Highlights() {
             id="book-recommendations-title"
             className="mb-1 text-[16px] text-foreground"
           >
-            Books I&apos;ve read and recommend
+            books i&apos;ve read
           </h3>
           <p className="mb-3 text-[13.6px] text-muted-foreground">
-            A few books that have stayed with me.
+            and would recommend to you.
           </p>
           <ul className="divide-y divide-border">
             {BOOKS.map((book) => (
